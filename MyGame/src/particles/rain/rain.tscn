@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 550, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( -38, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 1.0
+color = Color( 0.337255, 0.6, 0.803922, 1 )
+
+[node name="Particles2D" type="Particles2D"]
+position = Vector2( 607, -12 )
+amount = 1200
+lifetime = 3.5
+speed_scale = 2.0
+process_material = SubResource( 1 )
