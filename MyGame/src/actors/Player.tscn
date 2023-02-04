@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=106 format=2]
 
 [ext_resource path="res://assets/actors/sprite.png" type="Texture" id=1]
 [ext_resource path="res://src/actors/Player.gd" type="Script" id=2]
+[ext_resource path="res://src/scenes/rootSpawner.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -29,9 +30,23 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 50 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.222, 0.222 ) ]
+}
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle_right"
+[sub_resource type="Animation" id=73]
+resource_name = "gaia_s_mercy"
+length = 2.2
+step = 0.025
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:frame_coords")
 tracks/0/interp = 1
@@ -39,10 +54,76 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PoolRealArray( 0, 0.15, 0.3, 1.15, 1.2, 1.275, 1.3, 1.325, 1.35, 1.375, 1.4, 1.425, 1.45, 1.55, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [  ]
+"values": [ Vector2( 0, 6 ), Vector2( 1, 6 ), Vector2( 2, 6 ), Vector2( 4, 6 ), Vector2( 5, 6 ), Vector2( 6, 6 ), Vector2( 7, 6 ), Vector2( 6, 6 ), Vector2( 7, 6 ), Vector2( 6, 6 ), Vector2( 7, 6 ), Vector2( 6, 6 ), Vector2( 7, 6 ), Vector2( 8, 6 ), Vector2( 9, 6 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "idle_down"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 3 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle_right"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 2.1, 2.2, 2.3, 3.3, 3.5, 3.7, 3.9, 4.1, 4.3, 4.8, 5, 5.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 2, 0 ), Vector2( 3, 0 ), Vector2( 4, 0 ), Vector2( 5, 0 ), Vector2( 6, 0 ), Vector2( 5, 0 ), Vector2( 6, 0 ), Vector2( 5, 0 ), Vector2( 6, 0 ), Vector2( 7, 0 ), Vector2( 8, 0 ), Vector2( 9, 0 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "idle_up"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "sprint_down_1"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 3 ), Vector2( 2, 3 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -63,8 +144,8 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 1 ), Vector2( 6, 1 ), Vector2( 5, 1 ), Vector2( 1, 1 ), Vector2( 3, 1 ), Vector2( 5, 1 ), Vector2( 7, 1 ), Vector2( 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "walk_down_1"
+[sub_resource type="Animation" id=23]
+resource_name = "sprint_up_1"
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -77,7 +158,52 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
+"values": [ Vector2( 3, 4 ), Vector2( 4, 4 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "walk_down_1"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
 "values": [ Vector2( 1, 3 ), Vector2( 2, 3 ) ]
+}
+
+[sub_resource type="Animation" id=85]
+resource_name = "walk_left_1"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 5 ), Vector2( 1, 5 ), Vector2( 2, 5 ), Vector2( 1, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -0.222, 0.222 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -95,10 +221,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [ Vector2( 0, 5 ), Vector2( 1, 5 ), Vector2( 2, 5 ), Vector2( 1, 5 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.222, 0.222 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "walk_up_1"
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:frame_coords")
@@ -107,13 +245,225 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Vector2( 3, 4 ), Vector2( 4, 4 ) ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=74]
+animation = "gaia_s_mercy"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "sprint_down_1"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "sprint_right_1"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "sprint_up_1"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "walk_down_1"
+
+[sub_resource type="AnimationNodeAnimation" id=86]
+animation = "walk_left_1"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "walk_right_1"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "walk_up_1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=51]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=52]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=55]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=56]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=64]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=65]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=66]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=67]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=71]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=72]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=78]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=79]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=81]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=82]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=83]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=84]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=87]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=88]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=89]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=90]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=91]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=92]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=93]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=94]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=95]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=96]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=97]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=98]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=99]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=100]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=101]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=102]
+
 [sub_resource type="AnimationNodeStateMachine" id=7]
+states/gaia_s_mercy/node = SubResource( 74 )
+states/gaia_s_mercy/position = Vector2( 239, 100.696 )
+states/idle_down/node = SubResource( 24 )
+states/idle_down/position = Vector2( 893, 267 )
+states/idle_right/node = SubResource( 9 )
+states/idle_right/position = Vector2( 1122, 154 )
+states/idle_up/node = SubResource( 25 )
+states/idle_up/position = Vector2( 913, 64 )
+states/sprint_down_1/node = SubResource( 26 )
+states/sprint_down_1/position = Vector2( 989, 457 )
+states/sprint_right_1/node = SubResource( 10 )
+states/sprint_right_1/position = Vector2( 1663, 182 )
+states/sprint_up_1/node = SubResource( 27 )
+states/sprint_up_1/position = Vector2( 873, -131 )
+states/walk_down_1/node = SubResource( 11 )
+states/walk_down_1/position = Vector2( 739, 424 )
+states/walk_left_1/node = SubResource( 86 )
+states/walk_left_1/position = Vector2( 237, 325.16 )
+states/walk_right_1/node = SubResource( 12 )
+states/walk_right_1/position = Vector2( 1504, 86 )
+states/walk_up_1/node = SubResource( 13 )
+states/walk_up_1/position = Vector2( 721, -25 )
+transitions = [ "idle_right", "walk_right_1", SubResource( 14 ), "walk_right_1", "sprint_right_1", SubResource( 15 ), "sprint_right_1", "walk_right_1", SubResource( 16 ), "walk_right_1", "idle_right", SubResource( 17 ), "idle_right", "sprint_right_1", SubResource( 18 ), "sprint_right_1", "idle_right", SubResource( 19 ), "idle_up", "walk_up_1", SubResource( 28 ), "walk_up_1", "idle_up", SubResource( 29 ), "walk_up_1", "sprint_up_1", SubResource( 30 ), "sprint_up_1", "walk_up_1", SubResource( 31 ), "idle_up", "idle_right", SubResource( 32 ), "idle_right", "walk_up_1", SubResource( 33 ), "idle_up", "walk_right_1", SubResource( 34 ), "idle_right", "sprint_up_1", SubResource( 35 ), "idle_up", "sprint_right_1", SubResource( 36 ), "idle_right", "walk_down_1", SubResource( 37 ), "idle_right", "sprint_down_1", SubResource( 38 ), "idle_down", "walk_down_1", SubResource( 39 ), "walk_down_1", "idle_down", SubResource( 40 ), "walk_down_1", "sprint_down_1", SubResource( 41 ), "sprint_down_1", "walk_down_1", SubResource( 42 ), "walk_down_1", "walk_right_1", SubResource( 43 ), "walk_right_1", "walk_down_1", SubResource( 44 ), "walk_down_1", "sprint_right_1", SubResource( 45 ), "sprint_down_1", "sprint_right_1", SubResource( 46 ), "sprint_right_1", "walk_down_1", SubResource( 47 ), "sprint_right_1", "sprint_down_1", SubResource( 48 ), "walk_right_1", "sprint_down_1", SubResource( 49 ), "sprint_down_1", "walk_right_1", SubResource( 50 ), "walk_right_1", "walk_up_1", SubResource( 51 ), "walk_up_1", "walk_right_1", SubResource( 52 ), "walk_right_1", "sprint_up_1", SubResource( 53 ), "sprint_up_1", "walk_right_1", SubResource( 54 ), "sprint_right_1", "walk_up_1", SubResource( 55 ), "walk_up_1", "sprint_right_1", SubResource( 56 ), "sprint_right_1", "sprint_up_1", SubResource( 57 ), "sprint_up_1", "sprint_right_1", SubResource( 58 ), "walk_down_1", "walk_up_1", SubResource( 59 ), "walk_up_1", "walk_down_1", SubResource( 60 ), "walk_down_1", "sprint_up_1", SubResource( 61 ), "sprint_up_1", "walk_down_1", SubResource( 62 ), "sprint_down_1", "walk_up_1", SubResource( 63 ), "walk_up_1", "sprint_down_1", SubResource( 64 ), "sprint_down_1", "sprint_up_1", SubResource( 65 ), "sprint_up_1", "sprint_down_1", SubResource( 66 ), "idle_down", "walk_up_1", SubResource( 67 ), "idle_down", "sprint_up_1", SubResource( 68 ), "idle_down", "walk_right_1", SubResource( 69 ), "idle_down", "sprint_right_1", SubResource( 70 ), "idle_up", "walk_down_1", SubResource( 71 ), "idle_up", "sprint_down_1", SubResource( 72 ), "gaia_s_mercy", "idle_right", SubResource( 75 ), "idle_up", "gaia_s_mercy", SubResource( 76 ), "idle_down", "gaia_s_mercy", SubResource( 77 ), "idle_right", "gaia_s_mercy", SubResource( 78 ), "walk_up_1", "gaia_s_mercy", SubResource( 79 ), "sprint_up_1", "gaia_s_mercy", SubResource( 80 ), "walk_right_1", "gaia_s_mercy", SubResource( 81 ), "sprint_right_1", "gaia_s_mercy", SubResource( 82 ), "walk_down_1", "gaia_s_mercy", SubResource( 83 ), "sprint_down_1", "gaia_s_mercy", SubResource( 84 ), "walk_down_1", "walk_left_1", SubResource( 87 ), "walk_left_1", "walk_down_1", SubResource( 88 ), "sprint_down_1", "walk_left_1", SubResource( 89 ), "walk_left_1", "sprint_down_1", SubResource( 90 ), "walk_up_1", "walk_left_1", SubResource( 91 ), "walk_left_1", "walk_up_1", SubResource( 92 ), "walk_left_1", "sprint_up_1", SubResource( 93 ), "sprint_up_1", "walk_left_1", SubResource( 94 ), "walk_left_1", "gaia_s_mercy", SubResource( 95 ), "walk_left_1", "sprint_right_1", SubResource( 96 ), "sprint_right_1", "walk_left_1", SubResource( 97 ), "walk_right_1", "walk_left_1", SubResource( 98 ), "walk_left_1", "walk_right_1", SubResource( 99 ), "idle_down", "walk_left_1", SubResource( 100 ), "idle_up", "walk_left_1", SubResource( 101 ), "idle_right", "walk_left_1", SubResource( 102 ) ]
+start_node = "idle_right"
+graph_offset = Vector2( 39.051, 90.3998 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=8]
 
@@ -122,22 +472,55 @@ position = Vector2( 467, 382 )
 scale = Vector2( 1.02896, 1 )
 script = ExtResource( 2 )
 
+[node name="rootSpawner" parent="." instance=ExtResource( 3 )]
+position = Vector2( -201.174, -365 )
+
+[node name="rootSpawner2" parent="." instance=ExtResource( 3 )]
+position = Vector2( -286.697, -255 )
+
+[node name="rootSpawner3" parent="." instance=ExtResource( 3 )]
+position = Vector2( -269.204, -500 )
+
+[node name="rootSpawner4" parent="." instance=ExtResource( 3 )]
+position = Vector2( -423.729, -564 )
+
+[node name="rootSpawner5" parent="." instance=ExtResource( 3 )]
+position = Vector2( -402.348, -161 )
+
+[node name="rootSpawner6" parent="." instance=ExtResource( 3 )]
+position = Vector2( -559.789, -159 )
+
+[node name="rootSpawner7" parent="." instance=ExtResource( 3 )]
+position = Vector2( -707.51, -248 )
+
+[node name="rootSpawner8" parent="." instance=ExtResource( 3 )]
+position = Vector2( -689.045, -414 )
+
+[node name="rootSpawner9" parent="." instance=ExtResource( 3 )]
+position = Vector2( -572.423, -515 )
+
 [node name="PlayerStableCollision" type="CollisionPolygon2D" parent="."]
-position = Vector2( -1643.87, 1140.04 )
-scale = Vector2( 75.1869, 70.7062 )
-polygon = PoolVector2Array( 29, -20, 28, -20, 28, -26, 26, -29, 25, -32, 24, -34, 26, -36, 26, -42, 25, -45, 23, -46, 22, -47, 14, -47, 12, -46, 10, -44, 10, -37, 7, -34, 5, -28, 3, -21, 0, -19, 0, -16, 1, -15, 1, -13, 3, -11, 5, -13, 5, -14, 7, -13, 11, -13, 10, -10, 8, -9, 8, 0, 24, 0, 25, -13, 24, -13, 24, -14, 23, -14, 24, -16, 26, -16, 29, -16 )
+position = Vector2( -488.843, -331 )
+scale = Vector2( 2.1896, 2.05911 )
+polygon = PoolVector2Array( 28, -20, 28, -26, 26.1871, -28.1674, 5, -28, 3, -21, 5, -14, 7, -13, 8, -9, 8, 0, 24, 0, 25, -13, 26, -16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
+anims/gaia_s_mercy = SubResource( 73 )
+anims/idle_down = SubResource( 21 )
 anims/idle_right = SubResource( 2 )
+anims/idle_up = SubResource( 20 )
+anims/sprint_down_1 = SubResource( 22 )
 anims/sprint_right_1 = SubResource( 6 )
+anims/sprint_up_1 = SubResource( 23 )
 anims/walk_down_1 = SubResource( 3 )
+anims/walk_left_1 = SubResource( 85 )
 anims/walk_right_1 = SubResource( 4 )
 anims/walk_up_1 = SubResource( 5 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
-position = Vector2( -466, -391 )
-scale = Vector2( 7.96875, 7.96875 )
+position = Vector2( -453.856, -382 )
+scale = Vector2( -0.222, 0.222 )
 texture = ExtResource( 1 )
 hframes = 10
 vframes = 7
@@ -149,3 +532,4 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 8 )
 
 [node name="Camera" type="Camera2D" parent="."]
+position = Vector2( -452.884, -382 )

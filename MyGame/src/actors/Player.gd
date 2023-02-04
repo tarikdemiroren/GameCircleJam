@@ -2,18 +2,21 @@ extends Actor
 
 onready var cam : Camera2D = $Camera
 onready var animation_tree : AnimationTree = $PlayerAnimationTree
-onready var state_machine: AnimationNodeStateMachine = animation_tree.get("parameter/playback")
+onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+onready var animation_player := $AnimationPlayer
 
 enum FACED_DIR {RIGHT, LEFT, UP, DOWN}
 var last_dir_updo = FACED_DIR.DOWN
 var last_dir_leri = FACED_DIR.RIGHT
 var input_direction = Vector2()
 
+var isSprinting = false
+onready var rootSpawns = [$rootSpawner, $rootSpawner2, $rootSpawner3, $rootSpawner4, $rootSpawner5, $rootSpawner6, $rootSpawner7, $rootSpawner8, $rootSpawner9]
 
 func _ready() -> void:
 	cam.make_current()
-	#state_machine.travel("idle_right")
-	pass
+	animation_tree.active = true
+	state_machine.travel("idle_right")
 
 func _physics_process(delta):
 	get_input()
@@ -32,20 +35,71 @@ func get_input():
 	input_direction = input_direction.normalized() * speed
 	
 	if Input.is_action_pressed("sprint"):
+		isSprinting = true
 		input_direction = input_direction * 1.7
-	
-	determine_last_direction()
-
-func determine_last_direction():
-	if input_direction.x > 0:
-		last_dir_leri = FACED_DIR.RIGHT
-	elif input_direction.x < 0:
-		last_dir_leri = FACED_DIR.LEFT
+	else:
+		isSprinting = false
 		
-	if input_direction.y > 0:
-		last_dir_updo = FACED_DIR.DOWN
-	elif input_direction.y < 0:
-		last_dir_updo = FACED_DIR.UP
+	if Input.is_action_just_pressed("ultimate_attack"):
+		ultimate_attack()
+	
+	determine_move_animation()
+	
+
+func determine_move_animation():
+	
+	if input_direction.length() == 0:
+		if state_machine.get_current_node() == "sprint_right_1" or state_machine.get_current_node() == "walk_right_1":
+			state_machine.travel("idle_right")
+			return
+		if state_machine.get_current_node() == "sprint_left_1" or state_machine.get_current_node() == "walk_left_1":
+			state_machine.travel("idle_left")
+			return
+		if state_machine.get_current_node() == "sprint_down_1" or state_machine.get_current_node() == "walk_down_1":
+			state_machine.travel("idle_down")
+			return
+		if state_machine.get_current_node() == "sprint_up_1" or state_machine.get_current_node() == "walk_up_1":
+			state_machine.travel("idle_up")
+		return
+		
+	if isSprinting:
+		if input_direction.y > 0:
+			state_machine.travel("sprint_down_1")
+			return
+		elif input_direction.y < 0:
+			state_machine.travel("sprint_up_1")
+			return
+		#
+		if input_direction.x > 0:
+			state_machine.travel("sprint_right_1")
+			
+		elif input_direction.x < 0:
+			#TODO left sprint
+			pass
+		return
+	else:
+		if input_direction.y > 0:
+			state_machine.travel("walk_down_1")
+			return
+		elif input_direction.y < 0:
+			state_machine.travel("walk_up_1")
+			return
+		#
+		if input_direction.x > 0:
+			state_machine.travel("walk_right_1")
+			return
+		elif input_direction.x < 0:
+			state_machine.travel("walk_left_1")
+			return
+
+func ultimate_attack():
+	state_machine.start("gaia_s_mercy")
+	print(state_machine.get_current_play_position())
+	for item in rootSpawns:
+		item.spawn()
+	#summon trees
+
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
