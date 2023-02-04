@@ -32,8 +32,8 @@ func get_input():
 	if not cutInput:
 	
 		if Input.is_action_just_pressed("ultimate_attack"):
-			if last_time_ult_used == null or OS.get_time() - last_time_ult_used > 10:
-				last_time_ult_used = OS.get_time()
+			if last_time_ult_used == null or OS.get_unix_time() - last_time_ult_used > 10:
+				last_time_ult_used = OS.get_unix_time()
 				ultimate_attack()
 				cutInput = true
 				return

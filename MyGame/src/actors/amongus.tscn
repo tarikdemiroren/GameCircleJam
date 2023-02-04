@@ -120,6 +120,7 @@ tracks/0/keys = {
 }
 
 [node name="amongusKinematic" type="KinematicBody2D"]
+scale = Vector2( 100, 100 )
 
 [node name="amongusSprite" type="Sprite" parent="."]
 scale = Vector2( 0.1, 0.1 )

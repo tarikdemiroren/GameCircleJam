@@ -25,9 +25,17 @@ tile_data = PoolIntArray( -3211300, 8, 0, -3211299, 5, 0, -3211297, 6, 0, -32112
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 453, 250 )
+scale = Vector2( 0.6, 0.6 )
 
 [node name="PlayerAnimationTree" parent="Player" index="12"]
 parameters/playback = SubResource( 1 )
+
+[node name="Camera" parent="Player" index="13"]
+zoom = Vector2( 0.35, 0.35 )
+limit_left = -1127
+limit_top = -1600
+limit_right = 2400
+limit_bottom = 2185
 
 [node name="Particles2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( -495, 379 )
