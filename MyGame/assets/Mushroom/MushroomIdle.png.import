@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Attack.png-c0092a3e7353f0f68929c0e68ad84a4a.stex"
+path="res://.import/MushroomIdle.png-a0bbd0718ac64b6b874eabd14980b41e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Mushroom/Attack.png"
-dest_files=[ "res://.import/Attack.png-c0092a3e7353f0f68929c0e68ad84a4a.stex" ]
+source_file="res://assets/Mushroom/MushroomIdle.png"
+dest_files=[ "res://.import/MushroomIdle.png-a0bbd0718ac64b6b874eabd14980b41e.stex" ]
 
 [params]
 

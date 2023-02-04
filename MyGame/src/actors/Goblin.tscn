@@ -1,20 +1,19 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://assets/Mushroom/MushroomIdle.png" type="Texture" id=1]
-[ext_resource path="res://assets/Mushroom/MushroomDeath.png" type="Texture" id=2]
-[ext_resource path="res://assets/Mushroom/MushroomTakeHit.png" type="Texture" id=3]
-[ext_resource path="res://assets/Mushroom/MushroomRun.png" type="Texture" id=4]
-[ext_resource path="res://assets/Mushroom/MushroomAttack.png" type="Texture" id=5]
+[ext_resource path="res://assets/goblin/GoblinDeath.png" type="Texture" id=1]
+[ext_resource path="res://assets/goblin/GoblinRun.png" type="Texture" id=2]
+[ext_resource path="res://assets/goblin/GoblinAttack.png" type="Texture" id=3]
+[ext_resource path="res://assets/goblin/GoblinIdle.png" type="Texture" id=4]
+[ext_resource path="res://assets/goblin/GoblinTakeHit.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-height = 16.0
 
 [sub_resource type="Animation" id=2]
-resource_name = "MushroomAttack"
+resource_name = "GoblinAttack"
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("MushroomAttack:frame")
+tracks/0/path = NodePath("GoblinAttack:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -27,11 +26,11 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "MushroomDeath"
+resource_name = "GoblinDeath"
 length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("MushroomDeath:frame")
+tracks/0/path = NodePath("GoblinDeath:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -44,11 +43,11 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "MushroomIdle"
+resource_name = "GoblinIdle"
 length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("MushroomIdle:frame")
+tracks/0/path = NodePath("GoblinIdle:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -61,11 +60,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "MushroomRun"
+resource_name = "GoblinRun"
 length = 0.8
-loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("MushroomRun:frame")
+tracks/0/path = NodePath("GoblinRun:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -78,11 +76,11 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-resource_name = "MushroomTakeHit"
+resource_name = "GoblinTakeHit"
 length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("MushroomTakeHit:frame")
+tracks/0/path = NodePath("GoblinTakeHit:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -97,7 +95,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("MushroomIdle:frame")
+tracks/0/path = NodePath("GoblinAttack:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -109,7 +107,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MushroomRun:frame")
+tracks/1/path = NodePath("GoblinDeath:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -121,7 +119,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("MushroomTakeHit:frame")
+tracks/2/path = NodePath("GoblinIdle:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -133,7 +131,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("MushroomDeath:frame")
+tracks/3/path = NodePath("GoblinRun:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -145,7 +143,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MushroomAttack:frame")
+tracks/4/path = NodePath("GoblinTakeHit:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -157,46 +155,49 @@ tracks/4/keys = {
 "values": [ 0 ]
 }
 
-[node name="MushroomKinematic" type="KinematicBody2D"]
+[node name="GoblinKinematic" type="KinematicBody2D"]
 position = Vector2( 75, 75 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 150.0, 75.0 ],
-"_edit_vertical_guides_": [ 150.0, 75.0 ]
+"_edit_horizontal_guides_": [ 75.0 ],
+"_edit_vertical_guides_": [ 75.0 ]
 }
 
-[node name="MushroomCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 8 )
+[node name="GoblinCollision" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="MushroomIdle" type="Sprite" parent="."]
+[node name="GoblinAttack" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -1 )
+texture = ExtResource( 3 )
+hframes = 8
+
+[node name="GoblinDeath" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -1 )
 texture = ExtResource( 1 )
 hframes = 4
 
-[node name="MushroomRun" type="Sprite" parent="."]
-visible = false
+[node name="GoblinIdle" type="Sprite" parent="."]
+position = Vector2( 0, 1 )
 texture = ExtResource( 4 )
+hframes = 4
+
+[node name="GoblinRun" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 1 )
+texture = ExtResource( 2 )
 hframes = 8
 
-[node name="MushroomTakeHit" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 3 )
-hframes = 4
-
-[node name="MushroomDeath" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 2 )
-hframes = 4
-
-[node name="MushroomAttack" type="Sprite" parent="."]
+[node name="GoblinTakeHit" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 5 )
-hframes = 8
+hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "MushroomIdle"
-anims/MushroomAttack = SubResource( 2 )
-anims/MushroomDeath = SubResource( 3 )
-anims/MushroomIdle = SubResource( 4 )
-anims/MushroomRun = SubResource( 5 )
-anims/MushroomTakeHit = SubResource( 6 )
+autoplay = "GoblinIdle"
+anims/GoblinAttack = SubResource( 2 )
+anims/GoblinDeath = SubResource( 3 )
+anims/GoblinIdle = SubResource( 4 )
+anims/GoblinRun = SubResource( 5 )
+anims/GoblinTakeHit = SubResource( 6 )
 anims/RESET = SubResource( 7 )

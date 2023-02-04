@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Death.png-19f591fd05fa96d3392e06f01435525d.stex"
+path="res://.import/GoblinIdle.png-ddd64d1157307b60b80f7390f7ed4028.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Mushroom/Death.png"
-dest_files=[ "res://.import/Death.png-19f591fd05fa96d3392e06f01435525d.stex" ]
+source_file="res://assets/goblin/GoblinIdle.png"
+dest_files=[ "res://.import/GoblinIdle.png-ddd64d1157307b60b80f7390f7ed4028.stex" ]
 
 [params]
 

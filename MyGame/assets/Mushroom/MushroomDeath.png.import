@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Run.png-52682a87628b47fd410a880619362485.stex"
+path="res://.import/MushroomDeath.png-bc4d29949ccf52a94b46614d29e98902.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Mushroom/Run.png"
-dest_files=[ "res://.import/Run.png-52682a87628b47fd410a880619362485.stex" ]
+source_file="res://assets/Mushroom/MushroomDeath.png"
+dest_files=[ "res://.import/MushroomDeath.png-bc4d29949ccf52a94b46614d29e98902.stex" ]
 
 [params]
 
