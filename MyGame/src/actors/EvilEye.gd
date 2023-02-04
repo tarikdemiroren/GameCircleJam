@@ -23,7 +23,23 @@ var damage = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	speed = 150
+	health = 50
 	pass # Replace with function body.
+
+func take_damage(amount: int):
+	attSprite.hide()
+	fliSprite.hide()
+	hitSprite.show()
+	animator.play("EvilEyeTakeHit")
+	print(health)
+	health -= amount
+	print(health)
+	if (health <= 0):
+		print("girdi")
+		self.queue_free()
+	yield(animator, "animation_finished")
+	hitSprite.hide()
+	fliSprite.show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

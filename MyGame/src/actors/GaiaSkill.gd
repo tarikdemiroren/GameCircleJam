@@ -25,4 +25,4 @@ func _ready() -> void:
 
 
 func _on_rootHurtBox_body_entered(body):
-	body.take_hit(damage)
+	body.take_damage(damage)
