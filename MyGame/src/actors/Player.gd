@@ -82,7 +82,7 @@ func determine_move_animation():
 			state_machine.travel("sprint_right_1")
 			
 		elif input_direction.x < 0:
-			#TODO left sprint
+			state_machine.travel("sprint_left_1")
 			pass
 		return
 	else:
