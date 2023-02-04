@@ -74,6 +74,7 @@ tracks/1/keys = {
 }
 
 [node name="GaiaSkill" type="Node2D"]
+scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 2 )
 
 [node name="GaiaWrathRoots" type="Sprite" parent="."]

@@ -14,7 +14,8 @@ var input_direction = Vector2()
 var last_time_ult_used = null
 var cutInput = false
 var isSprinting = false
-onready var rootSpawns = [$rootSpawner, $rootSpawner2, $rootSpawner3, $rootSpawner4, $rootSpawner5, $rootSpawner6, $rootSpawner7]
+onready var rootSpawns1 = [$layer1/rootSpawner, $layer1/rootSpawner2, $layer1/rootSpawner3, $layer1/rootSpawner4, $layer1/rootSpawner5, $layer1/rootSpawner6, $layer1/rootSpawner7, $layer1/rootSpawner8, $layer1/rootSpawner9]
+onready var rootSpawns2 = [$layer2/rootSpawner, $layer2/rootSpawner2, $layer2/rootSpawner3, $layer2/rootSpawner4, $layer2/rootSpawner5, $layer2/rootSpawner6, $layer2/rootSpawner7, $layer2/rootSpawner8, $layer2/rootSpawner9]
 
 func _ready() -> void:
 	cam.make_current()
@@ -112,12 +113,16 @@ func determine_move_animation():
 
 func ultimate_attack():
 	state_machine.travel("gaia_s_mercy")
-	for item in rootSpawns:
+	for item in rootSpawns1:
 		item.spawn()
 	pass
 
 func free_soul():
 	cutInput = false
+	
+func theSecondWave():
+	for item in rootSpawns2:
+		item.spawn()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:

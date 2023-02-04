@@ -1,6 +1,6 @@
 extends AnimationPlayer
 
-onready var player : KinematicBody2D = $Player
+#onready var player : KinematicBody2D = $Player
 
 signal superIdolFinished
 
