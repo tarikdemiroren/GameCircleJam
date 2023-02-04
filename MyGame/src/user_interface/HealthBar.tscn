@@ -28,3 +28,5 @@ value = 100.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 1 )
 texture_progress_offset = Vector2( 10, 10 )
+
+[node name="Tween" type="Tween" parent="."]
