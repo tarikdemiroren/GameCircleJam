@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/EvilEye/EvilEyeRedFlight.png" type="Texture" id=1]
+[ext_resource path="res://assets/EvilEye/EvilEyeRedAttack.png" type="Texture" id=2]
+[ext_resource path="res://assets/EvilEye/EvilEyeRedDeath.png" type="Texture" id=3]
+[ext_resource path="res://assets/EvilEye/EvilEyeRedHit.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.0312
+
+[sub_resource type="Animation" id=2]
+resource_name = "EvilEyeRedAnimation"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EvilEyeRedFlight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "EvilEyeRedAttack"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EvilEyeRedFlight/EvilEyeRedAttack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("EvilEyeRedFlight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("EvilEyeRedFlight/EvilEyeRedAttack:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="EvilEyeRedKinematic" type="KinematicBody2D"]
+position = Vector2( 72, 44 )
+
+[node name="EvilEyeStronkCollision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="EvilEyeRedFlight" type="Sprite" parent="."]
+position = Vector2( -1, -2 )
+texture = ExtResource( 1 )
+offset = Vector2( 300, 0 )
+hframes = 8
+
+[node name="EvilEyeRedHit" type="Sprite" parent="EvilEyeRedFlight"]
+position = Vector2( 0, 448 )
+texture = ExtResource( 4 )
+hframes = 4
+
+[node name="EvilEyeRedAttack" type="Sprite" parent="EvilEyeRedFlight"]
+position = Vector2( 300, 148 )
+texture = ExtResource( 2 )
+hframes = 8
+
+[node name="EvilEyeRedDeath" type="Sprite" parent="EvilEyeRedFlight"]
+position = Vector2( 0, 297 )
+texture = ExtResource( 3 )
+hframes = 4
+
+[node name="EvilEyeRedAnimation" type="AnimationPlayer" parent="."]
+autoplay = "EvilEyeRedAnimation"
+anims/EvilEyeRedAnimation = SubResource( 2 )
+anims/EvilEyeRedAttack = SubResource( 4 )
+anims/RESET = SubResource( 3 )
