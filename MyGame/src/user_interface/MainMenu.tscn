@@ -42,12 +42,13 @@ anchor_bottom = 1.0
 [node name="menu_background" parent="." instance=ExtResource( 3 )]
 
 [node name="char" type="TextureRect" parent="."]
-margin_left = 288.0
-margin_top = 360.0
-margin_right = 428.0
-margin_bottom = 550.0
+margin_left = 181.0
+margin_top = 378.0
+margin_right = 321.0
+margin_bottom = 568.0
 texture = ExtResource( 1 )
 expand = true
+flip_h = true
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -61,7 +62,6 @@ margin_bottom = -8.0
 margin_right = 1004.0
 
 [node name="buttons" type="VBoxContainer" parent="MainContainer"]
-margin_left = 20.0
 margin_top = 4.0
 margin_right = 500.0
 margin_bottom = 547.0
