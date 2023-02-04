@@ -138,7 +138,6 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="EvilEyeRedFlight" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 3 )
 hframes = 8
 
@@ -151,12 +150,10 @@ anims/EvilEyeRedHit = SubResource( 6 )
 anims/RESET = SubResource( 3 )
 
 [node name="EvilEyeRedHit" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 4 )
 hframes = 4
 
 [node name="EvilEyeRedAttack" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 1 )
 hframes = 8
 
