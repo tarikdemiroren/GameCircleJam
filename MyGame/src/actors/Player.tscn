@@ -43,18 +43,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( -0.222, 0.222 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("playerAnimationController:script")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ ExtResource( 4 ) ]
-}
 
 [sub_resource type="Animation" id=73]
 resource_name = "gaia_s_mercy"
@@ -495,40 +483,39 @@ graph_offset = Vector2( 39.051, 90.3998 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=8]
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 467, 382 )
 scale = Vector2( 1.02896, 1 )
 collision_layer = 8
 script = ExtResource( 2 )
 
 [node name="rootSpawner" parent="." instance=ExtResource( 3 )]
-position = Vector2( -336.952, -320 )
+position = Vector2( 115.933, 64 )
 
 [node name="rootSpawner2" parent="." instance=ExtResource( 3 )]
-position = Vector2( -488.843, -448 )
+position = Vector2( -35.9583, -64 )
 
 [node name="rootSpawner3" parent="." instance=ExtResource( 3 )]
-position = Vector2( -346.671, -404 )
+position = Vector2( 106.214, -20 )
 
 [node name="rootSpawner4" parent="." instance=ExtResource( 3 )]
-position = Vector2( -405.673, -452 )
+position = Vector2( 47.2117, -68 )
 
 [node name="rootSpawner5" parent="." instance=ExtResource( 3 )]
-position = Vector2( -386.517, -256 )
+position = Vector2( 66.3677, 128 )
 
 [node name="rootSpawner6" parent="." instance=ExtResource( 3 )]
-position = Vector2( -450.659, -232 )
+position = Vector2( 2.22577, 152 )
 
 [node name="rootSpawner7" parent="." instance=ExtResource( 3 )]
-position = Vector2( -575.057, -316 )
+position = Vector2( -122.172, 68 )
 
 [node name="rootSpawner8" parent="." instance=ExtResource( 3 )]
-position = Vector2( -523.549, -261 )
+position = Vector2( -70.6643, 123 )
 
 [node name="rootSpawner9" parent="." instance=ExtResource( 3 )]
-position = Vector2( -554.648, -401 )
+position = Vector2( -101.763, -17 )
 
 [node name="PlayerStableCollision" type="CollisionPolygon2D" parent="."]
-position = Vector2( -488.843, -331 )
+position = Vector2( -35.9583, 53 )
 scale = Vector2( 2.1896, 2.05911 )
 polygon = PoolVector2Array( 28, -20, 28, -26, 26.1871, -28.1674, 5, -28, 3, -21, 5, -14, 7, -13, 8, -9, 8, 0, 24, 0, 25, -13, 26, -16 )
 
@@ -548,7 +535,7 @@ anims/walk_up_1 = SubResource( 5 )
 script = ExtResource( 4 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
-position = Vector2( -453.856, -382 )
+position = Vector2( -0.971252, 2 )
 scale = Vector2( -0.222, 0.222 )
 texture = ExtResource( 1 )
 hframes = 10
@@ -561,6 +548,6 @@ anim_player = NodePath("../playerAnimationController")
 parameters/playback = SubResource( 8 )
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( -452.884, -382 )
+position = Vector2( -0.971619, 1 )
 
 [connection signal="animation_finished" from="playerAnimationController" to="playerAnimationController" method="_on_playerAnimationController_animation_finished"]
