@@ -47,7 +47,7 @@ height = 0.0
 [node name="BatChonkAnimated" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "BatChonkAttack"
-frame = 7
+frame = 1
 speed_scale = 1.2
 playing = true
 
