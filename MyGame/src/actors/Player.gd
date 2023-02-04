@@ -3,7 +3,8 @@ extends Actor
 onready var cam : Camera2D = $Camera
 onready var animation_tree : AnimationTree = $PlayerAnimationTree
 onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
-onready var animation_player := $playerAnimationController
+onready var animatior := $playerAnimationController
+onready var watchSprite := $WatchMe
 
 enum FACED_DIR {RIGHT, LEFT, UP, DOWN}
 var last_dir_updo = FACED_DIR.DOWN
@@ -19,10 +20,13 @@ func _ready() -> void:
 	cam.make_current()
 	animation_tree.active = true
 	state_machine.travel("idle_right")
+	watchSprite.hide()
 
 func _physics_process(delta):
 	get_input()
 	input_direction = move_and_slide(input_direction)
+	
+	
 
 func get_input():
 	
@@ -37,6 +41,11 @@ func get_input():
 				ultimate_attack()
 				cutInput = true
 				return
+			else:
+				watchSprite.show()
+				animatior.play("on_cool_down")
+				yield(animatior, "animation_finished")
+				watchSprite.hide()
 		
 		if Input.is_action_pressed("right"):
 			input_direction.x += 1
