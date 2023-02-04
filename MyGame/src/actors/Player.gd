@@ -1,5 +1,7 @@
 extends Actor
 
+signal health_changed(health)
+
 onready var cam : Camera2D = $Camera
 onready var animation_tree : AnimationTree = $PlayerAnimationTree
 onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
@@ -17,15 +19,27 @@ var isSprinting = false
 onready var rootSpawns1 = [$layer1/rootSpawner, $layer1/rootSpawner2, $layer1/rootSpawner3, $layer1/rootSpawner4, $layer1/rootSpawner5, $layer1/rootSpawner6, $layer1/rootSpawner7, $layer1/rootSpawner8, $layer1/rootSpawner9]
 onready var rootSpawns2 = [$layer2/rootSpawner, $layer2/rootSpawner2, $layer2/rootSpawner3, $layer2/rootSpawner4, $layer2/rootSpawner5, $layer2/rootSpawner6, $layer2/rootSpawner7, $layer2/rootSpawner8, $layer2/rootSpawner9]
 
+const MAX_HEALTH = 100
+export var health = 100
+
 func _ready() -> void:
 	cam.make_current()
 	animation_tree.active = true
 	state_machine.travel("idle_right")
 	watchSprite.hide()
+	health = MAX_HEALTH
+	
+func take_damage(amount: int):
+	health -= amount
+	if health < 0:
+		queue_free()
+	emit_signal("health_changed", health)
 
 func _physics_process(delta):
 	get_input()
 	input_direction = move_and_slide(input_direction)
+	if Input.is_action_just_pressed("take_damage"):
+		take_damage(9)
 	
 	
 
@@ -123,6 +137,8 @@ func free_soul():
 func theSecondWave():
 	for item in rootSpawns2:
 		item.spawn()
+		
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
