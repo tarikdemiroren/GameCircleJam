@@ -42,7 +42,6 @@ color_initial_ramp = SubResource( 3 )
 
 [node name="Particles2D" type="Particles2D"]
 material = SubResource( 1 )
-position = Vector2( 211, 135 )
 amount = 4
 lifetime = 0.1
 speed_scale = 0.15
