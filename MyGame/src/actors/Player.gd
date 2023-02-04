@@ -3,7 +3,8 @@ extends Actor
 onready var cam : Camera2D = $Camera
 onready var animation_tree : AnimationTree = $PlayerAnimationTree
 onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
-onready var animation_player := $playerAnimationController
+onready var animatior := $playerAnimationController
+onready var watchSprite := $WatchMe
 
 enum FACED_DIR {RIGHT, LEFT, UP, DOWN}
 var last_dir_updo = FACED_DIR.DOWN
@@ -13,16 +14,20 @@ var input_direction = Vector2()
 var last_time_ult_used = null
 var cutInput = false
 var isSprinting = false
-onready var rootSpawns = [$rootSpawner, $rootSpawner2, $rootSpawner3, $rootSpawner4, $rootSpawner5, $rootSpawner6, $rootSpawner7]
+onready var rootSpawns1 = [$layer1/rootSpawner, $layer1/rootSpawner2, $layer1/rootSpawner3, $layer1/rootSpawner4, $layer1/rootSpawner5, $layer1/rootSpawner6, $layer1/rootSpawner7, $layer1/rootSpawner8, $layer1/rootSpawner9]
+onready var rootSpawns2 = [$layer2/rootSpawner, $layer2/rootSpawner2, $layer2/rootSpawner3, $layer2/rootSpawner4, $layer2/rootSpawner5, $layer2/rootSpawner6, $layer2/rootSpawner7, $layer2/rootSpawner8, $layer2/rootSpawner9]
 
 func _ready() -> void:
 	cam.make_current()
 	animation_tree.active = true
 	state_machine.travel("idle_right")
+	watchSprite.hide()
 
 func _physics_process(delta):
 	get_input()
 	input_direction = move_and_slide(input_direction)
+	
+	
 
 func get_input():
 	
@@ -37,6 +42,11 @@ func get_input():
 				ultimate_attack()
 				cutInput = true
 				return
+			else:
+				watchSprite.show()
+				animatior.play("on_cool_down")
+				yield(animatior, "animation_finished")
+				watchSprite.hide()
 		
 		if Input.is_action_pressed("right"):
 			input_direction.x += 1
@@ -103,12 +113,16 @@ func determine_move_animation():
 
 func ultimate_attack():
 	state_machine.travel("gaia_s_mercy")
-	for item in rootSpawns:
+	for item in rootSpawns1:
 		item.spawn()
 	pass
 
 func free_soul():
 	cutInput = false
+	
+func theSecondWave():
+	for item in rootSpawns2:
+		item.spawn()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
