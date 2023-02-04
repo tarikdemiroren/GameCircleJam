@@ -10,9 +10,10 @@ var last_dir_updo = FACED_DIR.DOWN
 var last_dir_leri = FACED_DIR.RIGHT
 var input_direction = Vector2()
 
+var last_time_ult_used = null
 var cutInput = false
 var isSprinting = false
-onready var rootSpawns = [$rootSpawner, $rootSpawner2, $rootSpawner3, $rootSpawner4, $rootSpawner5, $rootSpawner6, $rootSpawner7, $rootSpawner8, $rootSpawner9]
+onready var rootSpawns = [$rootSpawner, $rootSpawner2, $rootSpawner3, $rootSpawner4, $rootSpawner5, $rootSpawner6, $rootSpawner7]
 
 func _ready() -> void:
 	cam.make_current()
@@ -31,9 +32,11 @@ func get_input():
 	if not cutInput:
 	
 		if Input.is_action_just_pressed("ultimate_attack"):
-			ultimate_attack()
-			cutInput = true
-			return
+			if last_time_ult_used == null or OS.get_unix_time() - last_time_ult_used > 10:
+				last_time_ult_used = OS.get_unix_time()
+				ultimate_attack()
+				cutInput = true
+				return
 		
 		if Input.is_action_pressed("right"):
 			input_direction.x += 1
@@ -47,7 +50,7 @@ func get_input():
 		
 		if Input.is_action_pressed("sprint"):
 			isSprinting = true
-			input_direction = input_direction * 1.7
+			input_direction = input_direction * 1.5
 		else:
 			isSprinting = false
 	
@@ -80,11 +83,10 @@ func determine_move_animation():
 		#
 		if input_direction.x > 0:
 			state_machine.travel("sprint_right_1")
-			
+			return
 		elif input_direction.x < 0:
-			#TODO left sprint
-			pass
-		return
+			state_machine.travel("sprint_left_1")
+			return
 	else:
 		if input_direction.y > 0:
 			state_machine.travel("walk_down_1")
@@ -95,10 +97,9 @@ func determine_move_animation():
 		#
 		if input_direction.x > 0:
 			state_machine.travel("walk_right_1")
-			return
 		elif input_direction.x < 0:
 			state_machine.travel("walk_left_1")
-			return
+		return
 
 func ultimate_attack():
 	state_machine.travel("gaia_s_mercy")

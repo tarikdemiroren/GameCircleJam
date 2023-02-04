@@ -1,3 +1,3 @@
 extends KinematicBody2D
 class_name Actor
-export var speed: = 300
+export var speed: = 200
