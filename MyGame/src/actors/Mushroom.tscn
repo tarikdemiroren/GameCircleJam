@@ -1,16 +1,17 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/Mushroom/MushroomIdle.png" type="Texture" id=1]
 [ext_resource path="res://assets/Mushroom/MushroomDeath.png" type="Texture" id=2]
 [ext_resource path="res://assets/Mushroom/MushroomTakeHit.png" type="Texture" id=3]
 [ext_resource path="res://assets/Mushroom/MushroomRun.png" type="Texture" id=4]
 [ext_resource path="res://assets/Mushroom/MushroomAttack.png" type="Texture" id=5]
+[ext_resource path="res://src/actors/Mushroom.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 16.0
 
-[sub_resource type="Animation" id=2]
-resource_name = "MushroomAttack"
+[sub_resource type="Animation" id=11]
+resource_name = "MushroomAttackLeft"
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -24,6 +25,47 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MushroomAttack:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "MushroomAttackRight"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MushroomAttack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MushroomAttack:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -41,6 +83,47 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MushroomDeath:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "MushroomDeathLeft"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MushroomDeath:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MushroomDeath:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -60,8 +143,8 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "MushroomRun"
+[sub_resource type="Animation" id=10]
+resource_name = "MushroomRunLeft"
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -75,6 +158,47 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MushroomRun:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "MushroomRunRight"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MushroomRun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MushroomRun:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -92,6 +216,47 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MushroomTakeHit:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "MushroomTakeHitLeft"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MushroomTakeHit:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MushroomTakeHit:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -156,9 +321,65 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 0 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("MushroomRun:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MushroomTakeHit:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MushroomDeath:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MushroomAttack:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 139.109
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 56.0558
 
 [node name="MushroomKinematic" type="KinematicBody2D"]
 position = Vector2( 75, 75 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 150.0, 75.0 ],
 "_edit_vertical_guides_": [ 150.0, 75.0 ]
@@ -169,11 +390,12 @@ position = Vector2( 0, 8 )
 shape = SubResource( 1 )
 
 [node name="MushroomIdle" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 1 )
 hframes = 4
 
 [node name="MushroomRun" type="Sprite" parent="."]
-visible = false
+scale = Vector2( -1, 1 )
 texture = ExtResource( 4 )
 hframes = 8
 
@@ -192,11 +414,34 @@ visible = false
 texture = ExtResource( 5 )
 hframes = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="MushroomAnimation" type="AnimationPlayer" parent="."]
 autoplay = "MushroomIdle"
-anims/MushroomAttack = SubResource( 2 )
+anims/MushroomAttackLeft = SubResource( 11 )
+anims/MushroomAttackRight = SubResource( 2 )
 anims/MushroomDeath = SubResource( 3 )
+anims/MushroomDeathLeft = SubResource( 12 )
 anims/MushroomIdle = SubResource( 4 )
-anims/MushroomRun = SubResource( 5 )
+anims/MushroomRunLeft = SubResource( 10 )
+anims/MushroomRunRight = SubResource( 5 )
 anims/MushroomTakeHit = SubResource( 6 )
+anims/MushroomTakeHitLeft = SubResource( 13 )
 anims/RESET = SubResource( 7 )
+
+[node name="mushroomDetect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mushroomDetect"]
+shape = SubResource( 8 )
+
+[node name="mushAttack2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mushAttack2D"]
+shape = SubResource( 9 )
+
+[connection signal="body_entered" from="mushroomDetect" to="." method="_on_mushroomDetect_body_entered"]
+[connection signal="body_exited" from="mushroomDetect" to="." method="_on_mushroomDetect_body_exited"]
+[connection signal="body_entered" from="mushAttack2D" to="." method="_on_mushAttack2D_body_entered"]
+[connection signal="body_exited" from="mushAttack2D" to="." method="_on_mushAttack2D_body_exited"]
