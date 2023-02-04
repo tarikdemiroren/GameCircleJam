@@ -27,10 +27,17 @@ tile_data = PoolIntArray( -3211300, 8, 0, -3211299, 5, 0, -3211297, 6, 0, -32112
 position = Vector2( 453, 250 )
 scale = Vector2( -1, 1 )
 
-[node name="PlayerAnimationTree" parent="Player" index="12"]
+[node name="PlayerStableCollision" parent="Player" index="2"]
+position = Vector2( -32.9583, 43 )
+
+[node name="PlayerSprite" parent="Player" index="4"]
+position = Vector2( 0, 0 )
+
+[node name="PlayerAnimationTree" parent="Player" index="5"]
 parameters/playback = SubResource( 1 )
 
-[node name="Camera" parent="Player" index="13"]
+[node name="Camera" parent="Player" index="6"]
+position = Vector2( -3.57628e-07, 0 )
 zoom = Vector2( 0.35, 0.35 )
 limit_left = -1127
 limit_top = -1600

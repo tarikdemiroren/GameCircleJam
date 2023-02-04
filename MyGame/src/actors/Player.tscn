@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=2]
+[gd_scene load_steps=109 format=2]
 
 [ext_resource path="res://assets/actors/sprite.png" type="Texture" id=1]
 [ext_resource path="res://src/actors/Player.gd" type="Script" id=2]
@@ -44,30 +44,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( -0.222, 0.222 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("playerAnimationController:script")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ ExtResource( 4 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("WatchMe:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
 
 [sub_resource type="Animation" id=73]
 resource_name = "gaia_s_mercy"
@@ -84,23 +60,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 6 ), Vector2( 1, 6 ), Vector2( 2, 6 ), Vector2( 4, 6 ), Vector2( 5, 6 ), Vector2( 6, 6 ), Vector2( 7, 6 ), Vector2( 6, 6 ), Vector2( 7, 6 ), Vector2( 6, 6 ), Vector2( 7, 6 ), Vector2( 6, 6 ), Vector2( 7, 6 ), Vector2( 8, 6 ), Vector2( 9, 6 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.9, 2.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "theSecondWave"
-}, {
-"args": [  ],
-"method": "free_soul"
-} ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -201,18 +160,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 1 ), Vector2( 6, 1 ), Vector2( 5, 1 ), Vector2( 1, 1 ), Vector2( 3, 1 ), Vector2( 5, 1 ), Vector2( 7, 1 ), Vector2( 0, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("PlayerSprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.222, 0.222 ) ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -336,9 +283,6 @@ animation = "idle_up"
 
 [sub_resource type="AnimationNodeAnimation" id=26]
 animation = "sprint_down_1"
-
-[sub_resource type="AnimationNodeAnimation" id=104]
-animation = "sprint_left_1"
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "sprint_right_1"
@@ -512,44 +456,6 @@ animation = "walk_up_1"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=102]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=105]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=106]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=107]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=108]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=109]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=110]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=111]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=112]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=113]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=114]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=115]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=116]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=117]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=118]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=119]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=120]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=121]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=122]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=123]
-
 [sub_resource type="AnimationNodeStateMachine" id=7]
 states/gaia_s_mercy/node = SubResource( 74 )
 states/gaia_s_mercy/position = Vector2( 239, 100.696 )
@@ -561,8 +467,6 @@ states/idle_up/node = SubResource( 25 )
 states/idle_up/position = Vector2( 913, 64 )
 states/sprint_down_1/node = SubResource( 26 )
 states/sprint_down_1/position = Vector2( 989, 457 )
-states/sprint_left_1/node = SubResource( 104 )
-states/sprint_left_1/position = Vector2( 245.535, 472.861 )
 states/sprint_right_1/node = SubResource( 10 )
 states/sprint_right_1/position = Vector2( 1663, 182 )
 states/sprint_up_1/node = SubResource( 27 )
@@ -575,9 +479,9 @@ states/walk_right_1/node = SubResource( 12 )
 states/walk_right_1/position = Vector2( 1504, 86 )
 states/walk_up_1/node = SubResource( 13 )
 states/walk_up_1/position = Vector2( 721, -25 )
-transitions = [ "idle_right", "walk_right_1", SubResource( 14 ), "walk_right_1", "sprint_right_1", SubResource( 15 ), "sprint_right_1", "walk_right_1", SubResource( 16 ), "walk_right_1", "idle_right", SubResource( 17 ), "idle_right", "sprint_right_1", SubResource( 18 ), "sprint_right_1", "idle_right", SubResource( 19 ), "idle_up", "walk_up_1", SubResource( 28 ), "walk_up_1", "idle_up", SubResource( 29 ), "walk_up_1", "sprint_up_1", SubResource( 30 ), "sprint_up_1", "walk_up_1", SubResource( 31 ), "idle_up", "idle_right", SubResource( 32 ), "idle_right", "walk_up_1", SubResource( 33 ), "idle_up", "walk_right_1", SubResource( 34 ), "idle_right", "sprint_up_1", SubResource( 35 ), "idle_up", "sprint_right_1", SubResource( 36 ), "idle_right", "walk_down_1", SubResource( 37 ), "idle_right", "sprint_down_1", SubResource( 38 ), "idle_down", "walk_down_1", SubResource( 39 ), "walk_down_1", "idle_down", SubResource( 40 ), "walk_down_1", "sprint_down_1", SubResource( 41 ), "sprint_down_1", "walk_down_1", SubResource( 42 ), "walk_down_1", "walk_right_1", SubResource( 43 ), "walk_right_1", "walk_down_1", SubResource( 44 ), "walk_down_1", "sprint_right_1", SubResource( 45 ), "sprint_down_1", "sprint_right_1", SubResource( 46 ), "sprint_right_1", "walk_down_1", SubResource( 47 ), "sprint_right_1", "sprint_down_1", SubResource( 48 ), "walk_right_1", "sprint_down_1", SubResource( 49 ), "sprint_down_1", "walk_right_1", SubResource( 50 ), "walk_right_1", "walk_up_1", SubResource( 51 ), "walk_up_1", "walk_right_1", SubResource( 52 ), "walk_right_1", "sprint_up_1", SubResource( 53 ), "sprint_up_1", "walk_right_1", SubResource( 54 ), "sprint_right_1", "walk_up_1", SubResource( 55 ), "walk_up_1", "sprint_right_1", SubResource( 56 ), "sprint_right_1", "sprint_up_1", SubResource( 57 ), "sprint_up_1", "sprint_right_1", SubResource( 58 ), "walk_down_1", "walk_up_1", SubResource( 59 ), "walk_up_1", "walk_down_1", SubResource( 60 ), "walk_down_1", "sprint_up_1", SubResource( 61 ), "sprint_up_1", "walk_down_1", SubResource( 62 ), "sprint_down_1", "walk_up_1", SubResource( 63 ), "walk_up_1", "sprint_down_1", SubResource( 64 ), "sprint_down_1", "sprint_up_1", SubResource( 65 ), "sprint_up_1", "sprint_down_1", SubResource( 66 ), "idle_down", "walk_up_1", SubResource( 67 ), "idle_down", "sprint_up_1", SubResource( 68 ), "idle_down", "walk_right_1", SubResource( 69 ), "idle_down", "sprint_right_1", SubResource( 70 ), "idle_up", "walk_down_1", SubResource( 71 ), "idle_up", "sprint_down_1", SubResource( 72 ), "gaia_s_mercy", "idle_right", SubResource( 75 ), "idle_up", "gaia_s_mercy", SubResource( 76 ), "idle_down", "gaia_s_mercy", SubResource( 77 ), "idle_right", "gaia_s_mercy", SubResource( 78 ), "walk_up_1", "gaia_s_mercy", SubResource( 79 ), "sprint_up_1", "gaia_s_mercy", SubResource( 80 ), "walk_right_1", "gaia_s_mercy", SubResource( 81 ), "sprint_right_1", "gaia_s_mercy", SubResource( 82 ), "walk_down_1", "gaia_s_mercy", SubResource( 83 ), "sprint_down_1", "gaia_s_mercy", SubResource( 84 ), "walk_down_1", "walk_left_1", SubResource( 87 ), "walk_left_1", "walk_down_1", SubResource( 88 ), "sprint_down_1", "walk_left_1", SubResource( 89 ), "walk_left_1", "sprint_down_1", SubResource( 90 ), "walk_up_1", "walk_left_1", SubResource( 91 ), "walk_left_1", "walk_up_1", SubResource( 92 ), "walk_left_1", "sprint_up_1", SubResource( 93 ), "sprint_up_1", "walk_left_1", SubResource( 94 ), "walk_left_1", "gaia_s_mercy", SubResource( 95 ), "walk_left_1", "sprint_right_1", SubResource( 96 ), "sprint_right_1", "walk_left_1", SubResource( 97 ), "walk_right_1", "walk_left_1", SubResource( 98 ), "walk_left_1", "walk_right_1", SubResource( 99 ), "idle_down", "walk_left_1", SubResource( 100 ), "idle_up", "walk_left_1", SubResource( 101 ), "idle_right", "walk_left_1", SubResource( 102 ), "sprint_left_1", "walk_left_1", SubResource( 105 ), "walk_left_1", "sprint_left_1", SubResource( 106 ), "sprint_left_1", "walk_down_1", SubResource( 107 ), "walk_down_1", "sprint_left_1", SubResource( 108 ), "sprint_left_1", "gaia_s_mercy", SubResource( 109 ), "gaia_s_mercy", "sprint_left_1", SubResource( 110 ), "sprint_left_1", "sprint_down_1", SubResource( 111 ), "sprint_down_1", "sprint_left_1", SubResource( 112 ), "sprint_left_1", "walk_right_1", SubResource( 113 ), "walk_right_1", "sprint_left_1", SubResource( 114 ), "sprint_left_1", "sprint_right_1", SubResource( 115 ), "sprint_right_1", "sprint_left_1", SubResource( 116 ), "sprint_left_1", "walk_up_1", SubResource( 117 ), "walk_up_1", "sprint_left_1", SubResource( 118 ), "sprint_left_1", "sprint_up_1", SubResource( 119 ), "sprint_up_1", "sprint_left_1", SubResource( 120 ), "idle_up", "sprint_left_1", SubResource( 121 ), "idle_down", "sprint_left_1", SubResource( 122 ), "idle_right", "sprint_left_1", SubResource( 123 ) ]
+transitions = [ "idle_right", "walk_right_1", SubResource( 14 ), "walk_right_1", "sprint_right_1", SubResource( 15 ), "sprint_right_1", "walk_right_1", SubResource( 16 ), "walk_right_1", "idle_right", SubResource( 17 ), "idle_right", "sprint_right_1", SubResource( 18 ), "sprint_right_1", "idle_right", SubResource( 19 ), "idle_up", "walk_up_1", SubResource( 28 ), "walk_up_1", "idle_up", SubResource( 29 ), "walk_up_1", "sprint_up_1", SubResource( 30 ), "sprint_up_1", "walk_up_1", SubResource( 31 ), "idle_up", "idle_right", SubResource( 32 ), "idle_right", "walk_up_1", SubResource( 33 ), "idle_up", "walk_right_1", SubResource( 34 ), "idle_right", "sprint_up_1", SubResource( 35 ), "idle_up", "sprint_right_1", SubResource( 36 ), "idle_right", "walk_down_1", SubResource( 37 ), "idle_right", "sprint_down_1", SubResource( 38 ), "idle_down", "walk_down_1", SubResource( 39 ), "walk_down_1", "idle_down", SubResource( 40 ), "walk_down_1", "sprint_down_1", SubResource( 41 ), "sprint_down_1", "walk_down_1", SubResource( 42 ), "walk_down_1", "walk_right_1", SubResource( 43 ), "walk_right_1", "walk_down_1", SubResource( 44 ), "walk_down_1", "sprint_right_1", SubResource( 45 ), "sprint_down_1", "sprint_right_1", SubResource( 46 ), "sprint_right_1", "walk_down_1", SubResource( 47 ), "sprint_right_1", "sprint_down_1", SubResource( 48 ), "walk_right_1", "sprint_down_1", SubResource( 49 ), "sprint_down_1", "walk_right_1", SubResource( 50 ), "walk_right_1", "walk_up_1", SubResource( 51 ), "walk_up_1", "walk_right_1", SubResource( 52 ), "walk_right_1", "sprint_up_1", SubResource( 53 ), "sprint_up_1", "walk_right_1", SubResource( 54 ), "sprint_right_1", "walk_up_1", SubResource( 55 ), "walk_up_1", "sprint_right_1", SubResource( 56 ), "sprint_right_1", "sprint_up_1", SubResource( 57 ), "sprint_up_1", "sprint_right_1", SubResource( 58 ), "walk_down_1", "walk_up_1", SubResource( 59 ), "walk_up_1", "walk_down_1", SubResource( 60 ), "walk_down_1", "sprint_up_1", SubResource( 61 ), "sprint_up_1", "walk_down_1", SubResource( 62 ), "sprint_down_1", "walk_up_1", SubResource( 63 ), "walk_up_1", "sprint_down_1", SubResource( 64 ), "sprint_down_1", "sprint_up_1", SubResource( 65 ), "sprint_up_1", "sprint_down_1", SubResource( 66 ), "idle_down", "walk_up_1", SubResource( 67 ), "idle_down", "sprint_up_1", SubResource( 68 ), "idle_down", "walk_right_1", SubResource( 69 ), "idle_down", "sprint_right_1", SubResource( 70 ), "idle_up", "walk_down_1", SubResource( 71 ), "idle_up", "sprint_down_1", SubResource( 72 ), "gaia_s_mercy", "idle_right", SubResource( 75 ), "idle_up", "gaia_s_mercy", SubResource( 76 ), "idle_down", "gaia_s_mercy", SubResource( 77 ), "idle_right", "gaia_s_mercy", SubResource( 78 ), "walk_up_1", "gaia_s_mercy", SubResource( 79 ), "sprint_up_1", "gaia_s_mercy", SubResource( 80 ), "walk_right_1", "gaia_s_mercy", SubResource( 81 ), "sprint_right_1", "gaia_s_mercy", SubResource( 82 ), "walk_down_1", "gaia_s_mercy", SubResource( 83 ), "sprint_down_1", "gaia_s_mercy", SubResource( 84 ), "walk_down_1", "walk_left_1", SubResource( 87 ), "walk_left_1", "walk_down_1", SubResource( 88 ), "sprint_down_1", "walk_left_1", SubResource( 89 ), "walk_left_1", "sprint_down_1", SubResource( 90 ), "walk_up_1", "walk_left_1", SubResource( 91 ), "walk_left_1", "walk_up_1", SubResource( 92 ), "walk_left_1", "sprint_up_1", SubResource( 93 ), "sprint_up_1", "walk_left_1", SubResource( 94 ), "walk_left_1", "gaia_s_mercy", SubResource( 95 ), "walk_left_1", "sprint_right_1", SubResource( 96 ), "sprint_right_1", "walk_left_1", SubResource( 97 ), "walk_right_1", "walk_left_1", SubResource( 98 ), "walk_left_1", "walk_right_1", SubResource( 99 ), "idle_down", "walk_left_1", SubResource( 100 ), "idle_up", "walk_left_1", SubResource( 101 ), "idle_right", "walk_left_1", SubResource( 102 ) ]
 start_node = "idle_right"
-graph_offset = Vector2( 100.535, -129.967 )
+graph_offset = Vector2( 39.051, 90.3998 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=8]
 

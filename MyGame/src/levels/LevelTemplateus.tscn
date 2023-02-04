@@ -26,7 +26,7 @@ tile_data = PoolIntArray( -3211300, 8, 0, -3211299, 5, 0, -3211297, 6, 0, -32112
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 491, 280 )
 
-[node name="PlayerAnimationTree" parent="Player" index="12"]
+[node name="PlayerAnimationTree" parent="Player" index="5"]
 parameters/playback = SubResource( 1 )
 
 [node name="Particles2D" parent="." instance=ExtResource( 3 )]
