@@ -13,6 +13,7 @@ var mybody
 var is_in_area = false
 var is_attack_on = false
 var steering
+var damage = 10
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -77,3 +78,7 @@ func _on_AttRange_body_exited(body):
 	else:
 		animator.play("flight_left")
 	pass # Replace with function body.
+
+
+func _on_attArea_body_entered(body):
+	body.take_damage(damage)

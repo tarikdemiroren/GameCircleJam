@@ -38,6 +38,8 @@ func take_damage(amount: int):
 func _physics_process(delta):
 	get_input()
 	input_direction = move_and_slide(input_direction)
+	if Input.is_action_just_pressed("take_damage"):
+		take_damage(9)
 	
 	
 
