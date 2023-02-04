@@ -1,6 +1,8 @@
 extends Actor
 
 onready var cam : Camera2D = $Camera
+onready var animation_tree : AnimationTree = $PlayerAnimationTree
+onready var state_machine: AnimationNodeStateMachine = animation_tree.get("parameter/playback")
 
 enum FACED_DIR {RIGHT, LEFT, UP, DOWN}
 var last_dir_updo = FACED_DIR.DOWN
@@ -9,7 +11,8 @@ var input_direction = Vector2()
 
 
 func _ready() -> void:
-	#cam.make_current()
+	cam.make_current()
+	#state_machine.travel("idle_right")
 	pass
 
 func _physics_process(delta):
