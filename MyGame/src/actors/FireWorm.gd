@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Actor
 
 onready var attSprite = $FireWormAttack
 onready var deathSprite = $FireWormDeath
@@ -9,7 +9,6 @@ onready var animator = $FireWormAnimation
 onready var spawner = $fireballSpawner
 var is_attack_on = false
 var direction = Vector2.ZERO
-var speed = 120
 var velocity = Vector2.ZERO
 var mybody
 var is_in_area = false
@@ -19,6 +18,7 @@ var last_ulti = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	speed = 120
 	pass # Replace with function body.
 
 

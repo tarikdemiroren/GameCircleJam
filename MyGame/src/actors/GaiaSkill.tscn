@@ -84,6 +84,8 @@ texture = ExtResource( 1 )
 hframes = 5
 
 [node name="rootHurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="rootHurtBoxCollision" type="CollisionShape2D" parent="rootHurtBox"]
 position = Vector2( 0, -80 )
@@ -92,3 +94,5 @@ shape = SubResource( 1 )
 [node name="rooter" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/RootsUp = SubResource( 3 )
+
+[connection signal="body_entered" from="rootHurtBox" to="." method="_on_rootHurtBox_body_entered"]

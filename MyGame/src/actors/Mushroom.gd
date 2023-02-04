@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Actor
 
 onready var attSprite = $MushroomAttack
 onready var deathSprite = $MushroomDeath
@@ -8,7 +8,6 @@ onready var runSprite = $MushroomRun
 onready var animator = $MushroomAnimation
 var is_attack_on = false
 var direction = Vector2.ZERO
-var speed = 100
 var velocity = Vector2.ZERO
 var mybody
 var is_in_area = false
@@ -17,6 +16,7 @@ var steering
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	speed = 100
 	pass # Replace with function body.
 
 

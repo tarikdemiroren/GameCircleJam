@@ -2,6 +2,8 @@ extends Node2D
 
 class_name gaia_skill
 
+var damage = 100
+
 onready var animator := $rooter
 
 # Declare member variables here. Examples:
@@ -20,3 +22,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
+
+
+func _on_rootHurtBox_body_entered(body):
+	body.take_hit(damage)

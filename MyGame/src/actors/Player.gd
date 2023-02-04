@@ -1,6 +1,7 @@
 extends Actor
 
 signal health_changed(health)
+signal inevitable_death()
 
 onready var cam : Camera2D = $Camera
 onready var animation_tree : AnimationTree = $PlayerAnimationTree
@@ -19,9 +20,6 @@ var isSprinting = false
 onready var rootSpawns1 = [$layer1/rootSpawner, $layer1/rootSpawner2, $layer1/rootSpawner3, $layer1/rootSpawner4, $layer1/rootSpawner5, $layer1/rootSpawner6, $layer1/rootSpawner7, $layer1/rootSpawner8, $layer1/rootSpawner9]
 onready var rootSpawns2 = [$layer2/rootSpawner, $layer2/rootSpawner2, $layer2/rootSpawner3, $layer2/rootSpawner4, $layer2/rootSpawner5, $layer2/rootSpawner6, $layer2/rootSpawner7, $layer2/rootSpawner8, $layer2/rootSpawner9]
 
-const MAX_HEALTH = 100
-export var health = 100
-
 func _ready() -> void:
 	cam.make_current()
 	animation_tree.active = true
@@ -32,6 +30,7 @@ func _ready() -> void:
 func take_damage(amount: int):
 	health -= amount
 	if health < 0:
+		emit_signal("inevitable_death")
 		queue_free()
 	emit_signal("health_changed", health)
 

@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Actor
 
 onready var attSprite = $EvilEyeAttack
 onready var deathSprite = $EvilEyeDeath
@@ -6,7 +6,7 @@ onready var fliSprite = $EvilEyeFlight
 onready var hitSprite = $EvilEyeTakeHit
 onready var animator = $EvilEyeAnimation
 var direction = Vector2.ZERO
-var speed = 150
+
 var max_speed = 200
 var velocity = Vector2.ZERO
 var mybody
@@ -22,6 +22,7 @@ var damage = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	speed = 150
 	pass # Replace with function body.
 
 
