@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/prototype_assets/prototype_main_menu.jpeg" type="Texture" id=1]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 15, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 36.53
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 37.62
+angle = -45.0
+scale = 20.0
+color = Color( 0.701961, 0.701961, 0.701961, 1 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.487097, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.632812, 0, 1, 1, 0.0211416, 0.0211416, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.969274, 0.422692 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 18, 1 )
+flag_disable_z = true
+spread = 20.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 15.0
+angle = 45.0
+scale = 25.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="menu_background" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="smoke" type="Particles2D" parent="TextureRect"]
+position = Vector2( 859, 64 )
+rotation = -1.5708
+amount = 100
+lifetime = 2.0
+process_material = SubResource( 1 )
+
+[node name="fire" type="Particles2D" parent="."]
+position = Vector2( 110, 542 )
+rotation = -1.5708
+amount = 50
+lifetime = 2.0
+process_material = SubResource( 6 )
