@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/Mushroom/MushroomIdle.png" type="Texture" id=1]
 [ext_resource path="res://assets/Mushroom/MushroomDeath.png" type="Texture" id=2]
@@ -38,6 +38,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( -1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("MushHurtBox/CollisionShape2D:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, 10 ), Vector2( 29.25, 12 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "MushroomAttackRight"
@@ -67,10 +79,22 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("MushHurtBox/CollisionShape2D:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, 10 ), Vector2( 31.5, 18.5 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "MushroomDeath"
-length = 0.4
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("MushroomDeath:frame")
@@ -95,6 +119,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -369,6 +407,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("MushHurtBox/CollisionShape2D:shape:extents")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10, 10 ) ]
+}
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 139.109
@@ -376,9 +426,13 @@ radius = 139.109
 [sub_resource type="CircleShape2D" id=9]
 radius = 56.0558
 
+[sub_resource type="RectangleShape2D" id=14]
+
 [node name="MushroomKinematic" type="KinematicBody2D"]
 position = Vector2( 75, 75 )
 scale = Vector2( 2, 2 )
+collision_layer = 4
+collision_mask = 0
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 150.0, 75.0 ],
@@ -395,6 +449,7 @@ texture = ExtResource( 1 )
 hframes = 4
 
 [node name="MushroomRun" type="Sprite" parent="."]
+visible = false
 scale = Vector2( -1, 1 )
 texture = ExtResource( 4 )
 hframes = 8
@@ -410,7 +465,6 @@ texture = ExtResource( 2 )
 hframes = 4
 
 [node name="MushroomAttack" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 5 )
 hframes = 8
 
@@ -441,7 +495,16 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mushAttack2D"]
 shape = SubResource( 9 )
 
+[node name="MushHurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MushHurtBox"]
+position = Vector2( 0.5, 0.5 )
+shape = SubResource( 14 )
+
 [connection signal="body_entered" from="mushroomDetect" to="." method="_on_mushroomDetect_body_entered"]
 [connection signal="body_exited" from="mushroomDetect" to="." method="_on_mushroomDetect_body_exited"]
 [connection signal="body_entered" from="mushAttack2D" to="." method="_on_mushAttack2D_body_entered"]
 [connection signal="body_exited" from="mushAttack2D" to="." method="_on_mushAttack2D_body_exited"]
+[connection signal="body_entered" from="MushHurtBox" to="." method="_on_MushHurtBox_body_entered"]
