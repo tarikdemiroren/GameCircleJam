@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/FireWorm/Attack.png" type="Texture" id=1]
 [ext_resource path="res://assets/FireWorm/Get Hit.png" type="Texture" id=2]
 [ext_resource path="res://assets/FireWorm/Death.png" type="Texture" id=3]
 [ext_resource path="res://assets/FireWorm/Walk.png" type="Texture" id=4]
 [ext_resource path="res://assets/FireWorm/Idle.png" type="Texture" id=5]
+[ext_resource path="res://src/actors/FireWorm.gd" type="Script" id=6]
+[ext_resource path="res://src/scenes/fireballSpawner.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.05625
@@ -53,6 +55,49 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "FireWormAttackLeft"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FireWormAttack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FireWormAttack:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=3]
 resource_name = "FireWormDeath"
 length = 0.8
@@ -79,6 +124,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.72 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -108,6 +167,35 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "FireWormHitLeft"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FireWormGetHit:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FireWormGetHit:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -154,6 +242,35 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "FireWormWalkLeft"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FireWormWalk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FireWormWalk:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -267,8 +384,17 @@ tracks/8/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[sub_resource type="CircleShape2D" id=8]
+radius = 587.069
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 278.62
+
+[node name="FireWorm" type="KinematicBody2D"]
 position = Vector2( 75, 75 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 75.0 ],
 "_edit_vertical_guides_": [ 75.0 ]
@@ -278,35 +404,60 @@ __meta__ = {
 rotation = 0.867429
 shape = SubResource( 1 )
 
-[node name="Attack" type="Sprite" parent="."]
+[node name="FireWormAttack" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 1 )
 hframes = 16
 
-[node name="Death" type="Sprite" parent="."]
+[node name="FireWormDeath" type="Sprite" parent="."]
+visible = false
+scale = Vector2( -1, 1 )
 texture = ExtResource( 3 )
 hframes = 8
 
-[node name="GetHit" type="Sprite" parent="."]
+[node name="FireWormGetHit" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 2 )
 hframes = 3
 
-[node name="Idle" type="Sprite" parent="."]
-visible = false
+[node name="FireWormIdle" type="Sprite" parent="."]
 texture = ExtResource( 5 )
 hframes = 9
 
-[node name="Walk" type="Sprite" parent="."]
+[node name="FireWormWalk" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 4 )
 hframes = 9
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="FireWormAnimation" type="AnimationPlayer" parent="."]
 autoplay = "FireWormIdle"
 anims/FireWormAttack = SubResource( 2 )
+anims/FireWormAttackLeft = SubResource( 10 )
 anims/FireWormDeath = SubResource( 3 )
 anims/FireWormHit = SubResource( 4 )
+anims/FireWormHitLeft = SubResource( 11 )
 anims/FireWormIdle = SubResource( 5 )
 anims/FireWormWalk = SubResource( 6 )
+anims/FireWormWalkLeft = SubResource( 12 )
 anims/RESET = SubResource( 7 )
+
+[node name="FireWormDetect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireWormDetect"]
+shape = SubResource( 8 )
+
+[node name="FireWormAtt2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireWormAtt2D"]
+shape = SubResource( 9 )
+
+[node name="fireballSpawner" parent="." instance=ExtResource( 7 )]
+
+[connection signal="body_entered" from="FireWormDetect" to="." method="_on_FireWormDetect_body_entered"]
+[connection signal="body_exited" from="FireWormDetect" to="." method="_on_FireWormDetect_body_exited"]
+[connection signal="body_entered" from="FireWormAtt2D" to="." method="_on_FireWormAtt2D_body_entered"]
+[connection signal="body_exited" from="FireWormAtt2D" to="." method="_on_FireWormAtt2D_body_exited"]

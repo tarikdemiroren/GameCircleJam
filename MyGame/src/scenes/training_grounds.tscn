@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/gdadam/start-assets/tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://src/actors/EvilEye.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/actors/BlueSlime.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/PlayerScene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/actors/FireWorm.tscn" type="PackedScene" id=4]
 
 [node name="Level" type="Node2D"]
 
@@ -10,7 +11,13 @@
 tile_set = ExtResource( 1 )
 format = 1
 
-[node name="EvilEyeKinematic" parent="." instance=ExtResource( 2 )]
-position = Vector2( 441, 225 )
-
 [node name="PlayerScene" parent="." instance=ExtResource( 3 )]
+
+[node name="FireWorm" parent="." instance=ExtResource( 4 )]
+position = Vector2( -119, 392 )
+
+[node name="BlueSlimeKinematic" parent="." instance=ExtResource( 2 )]
+position = Vector2( 678, 505 )
+
+[node name="BlueSlimeKinematic2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 712, 223 )
