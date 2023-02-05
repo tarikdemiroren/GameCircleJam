@@ -13,6 +13,9 @@
 [ext_resource path="res://assets/actors/mid_range_attack_down.png" type="Texture" id=11]
 [ext_resource path="res://assets/actors/boomerang_attack.png" type="Texture" id=12]
 
+[sub_resource type="RectangleShape2D" id=186]
+extents = Vector2( 7.82078, 12.4765 )
+
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
@@ -232,7 +235,7 @@ tracks/17/keys = {
 "values": [ Vector2( 71.6667, -5 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("playerhurt/CollisionShape2D:shape:extents")
+tracks/18/path = NodePath("CloseRangeAttackDown/playerhurt/CollisionShape2D:shape:extents")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -244,12 +247,60 @@ tracks/18/keys = {
 "values": [ Vector2( 9.97282, 10 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("playerhurt/CollisionShape2D:disabled")
+tracks/19/path = NodePath("CloseRangeAttackDown/playerhurt/CollisionShape2D:disabled")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("CloseRangeAttackDown/playerhurt/CollisionShape2D:shape")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ SubResource( 186 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("CloseRangeAttackUp/playerhurt/CollisionShape2D:shape")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ SubResource( 186 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("CloseRangeAttackUp/playerhurt/CollisionShape2D:shape:extents")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 7.82078, 12.4765 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("CloseRangeAttackUp/playerhurt/CollisionShape2D:disabled")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -396,6 +447,18 @@ tracks/1/keys = {
 "method": "free_soul"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("CloseRangeAttackDown/playerhurt/CollisionShape2D:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.08, 0.41 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7.45924, 7.40018 ), Vector2( 7.45924, 16.3078 ), Vector2( 7.45924, 8.56503 ) ]
+}
 
 [sub_resource type="Animation" id=128]
 resource_name = "close_range_left"
@@ -451,6 +514,30 @@ tracks/3/keys = {
 "args": [  ],
 "method": "free_soul"
 } ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CloseRangeAttackDown/playerhurt/CollisionShape2D:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8.16964, 9.38529 ), Vector2( 13.7172, 10 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CloseRangeAttackDown/playerhurt/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.51 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=127]
@@ -509,7 +596,7 @@ tracks/3/keys = {
 } ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("playerhurt/CollisionShape2D:shape:extents")
+tracks/4/path = NodePath("CloseRangeAttackDown/playerhurt/CollisionShape2D:shape:extents")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -521,7 +608,7 @@ tracks/4/keys = {
 "values": [ Vector2( 9.97282, 10 ), Vector2( 14.9456, 10 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("playerhurt/CollisionShape2D:disabled")
+tracks/5/path = NodePath("CloseRangeAttackDown/playerhurt/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -562,6 +649,18 @@ tracks/1/keys = {
 "args": [  ],
 "method": "free_soul"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CloseRangeAttackUp/playerhurt/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.185, 0.405 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=73]
@@ -1396,7 +1495,7 @@ states/close_range_up/position = Vector2( 510.535, -161.967 )
 states/gaia_s_mercy/node = SubResource( 74 )
 states/gaia_s_mercy/position = Vector2( 239, 100.696 )
 states/idle_down/node = SubResource( 24 )
-states/idle_down/position = Vector2( 756, 248 )
+states/idle_down/position = Vector2( 768, 251 )
 states/idle_right/node = SubResource( 9 )
 states/idle_right/position = Vector2( 1122, 154 )
 states/idle_up/node = SubResource( 25 )
@@ -1427,12 +1526,9 @@ states/walk_up_1/node = SubResource( 13 )
 states/walk_up_1/position = Vector2( 721, -25 )
 transitions = [ "idle_right", "walk_right_1", SubResource( 14 ), "walk_right_1", "sprint_right_1", SubResource( 15 ), "sprint_right_1", "walk_right_1", SubResource( 16 ), "walk_right_1", "idle_right", SubResource( 17 ), "idle_right", "sprint_right_1", SubResource( 18 ), "sprint_right_1", "idle_right", SubResource( 19 ), "idle_up", "walk_up_1", SubResource( 28 ), "walk_up_1", "idle_up", SubResource( 29 ), "walk_up_1", "sprint_up_1", SubResource( 30 ), "sprint_up_1", "walk_up_1", SubResource( 31 ), "idle_up", "idle_right", SubResource( 32 ), "idle_right", "walk_up_1", SubResource( 33 ), "idle_up", "walk_right_1", SubResource( 34 ), "idle_right", "sprint_up_1", SubResource( 35 ), "idle_up", "sprint_right_1", SubResource( 36 ), "idle_right", "walk_down_1", SubResource( 37 ), "idle_right", "sprint_down_1", SubResource( 38 ), "idle_down", "walk_down_1", SubResource( 39 ), "walk_down_1", "idle_down", SubResource( 40 ), "walk_down_1", "sprint_down_1", SubResource( 41 ), "sprint_down_1", "walk_down_1", SubResource( 42 ), "walk_down_1", "walk_right_1", SubResource( 43 ), "walk_right_1", "walk_down_1", SubResource( 44 ), "walk_down_1", "sprint_right_1", SubResource( 45 ), "sprint_down_1", "sprint_right_1", SubResource( 46 ), "sprint_right_1", "walk_down_1", SubResource( 47 ), "sprint_right_1", "sprint_down_1", SubResource( 48 ), "walk_right_1", "sprint_down_1", SubResource( 49 ), "sprint_down_1", "walk_right_1", SubResource( 50 ), "walk_right_1", "walk_up_1", SubResource( 51 ), "walk_up_1", "walk_right_1", SubResource( 52 ), "walk_right_1", "sprint_up_1", SubResource( 53 ), "sprint_up_1", "walk_right_1", SubResource( 54 ), "sprint_right_1", "walk_up_1", SubResource( 55 ), "walk_up_1", "sprint_right_1", SubResource( 56 ), "sprint_right_1", "sprint_up_1", SubResource( 57 ), "sprint_up_1", "sprint_right_1", SubResource( 58 ), "walk_down_1", "walk_up_1", SubResource( 59 ), "walk_up_1", "walk_down_1", SubResource( 60 ), "walk_down_1", "sprint_up_1", SubResource( 61 ), "sprint_up_1", "walk_down_1", SubResource( 62 ), "sprint_down_1", "walk_up_1", SubResource( 63 ), "walk_up_1", "sprint_down_1", SubResource( 64 ), "sprint_down_1", "sprint_up_1", SubResource( 65 ), "sprint_up_1", "sprint_down_1", SubResource( 66 ), "idle_down", "walk_up_1", SubResource( 67 ), "idle_down", "sprint_up_1", SubResource( 68 ), "idle_down", "walk_right_1", SubResource( 69 ), "idle_down", "sprint_right_1", SubResource( 70 ), "idle_up", "walk_down_1", SubResource( 71 ), "idle_up", "sprint_down_1", SubResource( 72 ), "gaia_s_mercy", "idle_right", SubResource( 75 ), "idle_up", "gaia_s_mercy", SubResource( 76 ), "idle_down", "gaia_s_mercy", SubResource( 77 ), "idle_right", "gaia_s_mercy", SubResource( 78 ), "walk_up_1", "gaia_s_mercy", SubResource( 79 ), "sprint_up_1", "gaia_s_mercy", SubResource( 80 ), "walk_right_1", "gaia_s_mercy", SubResource( 81 ), "sprint_right_1", "gaia_s_mercy", SubResource( 82 ), "walk_down_1", "gaia_s_mercy", SubResource( 83 ), "sprint_down_1", "gaia_s_mercy", SubResource( 84 ), "walk_down_1", "walk_left_1", SubResource( 87 ), "walk_left_1", "walk_down_1", SubResource( 88 ), "sprint_down_1", "walk_left_1", SubResource( 89 ), "walk_left_1", "sprint_down_1", SubResource( 90 ), "walk_up_1", "walk_left_1", SubResource( 91 ), "walk_left_1", "walk_up_1", SubResource( 92 ), "walk_left_1", "sprint_up_1", SubResource( 93 ), "sprint_up_1", "walk_left_1", SubResource( 94 ), "walk_left_1", "gaia_s_mercy", SubResource( 95 ), "walk_left_1", "sprint_right_1", SubResource( 96 ), "sprint_right_1", "walk_left_1", SubResource( 97 ), "walk_right_1", "walk_left_1", SubResource( 98 ), "walk_left_1", "walk_right_1", SubResource( 99 ), "idle_down", "walk_left_1", SubResource( 100 ), "idle_up", "walk_left_1", SubResource( 101 ), "idle_right", "walk_left_1", SubResource( 102 ), "sprint_left_1", "walk_left_1", SubResource( 105 ), "walk_left_1", "sprint_left_1", SubResource( 106 ), "sprint_left_1", "walk_down_1", SubResource( 107 ), "walk_down_1", "sprint_left_1", SubResource( 108 ), "sprint_left_1", "gaia_s_mercy", SubResource( 109 ), "gaia_s_mercy", "sprint_left_1", SubResource( 110 ), "sprint_left_1", "sprint_down_1", SubResource( 111 ), "sprint_down_1", "sprint_left_1", SubResource( 112 ), "sprint_left_1", "walk_right_1", SubResource( 113 ), "walk_right_1", "sprint_left_1", SubResource( 114 ), "sprint_left_1", "sprint_right_1", SubResource( 115 ), "sprint_right_1", "sprint_left_1", SubResource( 116 ), "sprint_left_1", "walk_up_1", SubResource( 117 ), "walk_up_1", "sprint_left_1", SubResource( 118 ), "sprint_left_1", "sprint_up_1", SubResource( 119 ), "sprint_up_1", "sprint_left_1", SubResource( 120 ), "idle_up", "sprint_left_1", SubResource( 121 ), "idle_down", "sprint_left_1", SubResource( 122 ), "idle_right", "sprint_left_1", SubResource( 123 ), "close_range_left", "walk_left_1", SubResource( 145 ), "walk_left_1", "close_range_left", SubResource( 146 ), "sprint_left_1", "close_range_left", SubResource( 147 ), "close_range_left", "sprint_left_1", SubResource( 148 ), "walk_left_1", "mid_range_left", SubResource( 149 ), "mid_range_left", "walk_left_1", SubResource( 150 ), "sprint_left_1", "mid_range_left", SubResource( 151 ), "mid_range_left", "sprint_left_1", SubResource( 152 ), "close_range_left", "idle_down", SubResource( 153 ), "mid_range_left", "idle_down", SubResource( 154 ), "mid_range_up", "sprint_up_1", SubResource( 155 ), "sprint_up_1", "mid_range_up", SubResource( 156 ), "close_range_up", "sprint_up_1", SubResource( 157 ), "sprint_up_1", "close_range_up", SubResource( 158 ), "mid_range_up", "walk_up_1", SubResource( 159 ), "walk_up_1", "mid_range_up", SubResource( 160 ), "close_range_up", "walk_up_1", SubResource( 161 ), "walk_up_1", "close_range_up", SubResource( 162 ), "close_range_up", "idle_down", SubResource( 163 ), "mid_range_up", "idle_down", SubResource( 164 ), "walk_down_1", "close_range_down", SubResource( 165 ), "close_range_down", "walk_down_1", SubResource( 166 ), "mid_range_down", "walk_down_1", SubResource( 167 ), "walk_down_1", "mid_range_down", SubResource( 168 ), "mid_range_down", "sprint_down_1", SubResource( 169 ), "sprint_down_1", "mid_range_down", SubResource( 170 ), "sprint_down_1", "close_range_down", SubResource( 171 ), "close_range_down", "sprint_down_1", SubResource( 172 ), "walk_right_1", "mid_range_right", SubResource( 173 ), "mid_range_right", "walk_right_1", SubResource( 174 ), "walk_right_1", "close_range_right", SubResource( 175 ), "close_range_right", "walk_right_1", SubResource( 176 ), "sprint_right_1", "mid_range_right", SubResource( 177 ), "mid_range_right", "sprint_right_1", SubResource( 178 ), "sprint_right_1", "close_range_right", SubResource( 179 ), "close_range_right", "sprint_right_1", SubResource( 180 ), "mid_range_right", "idle_right", SubResource( 181 ), "mid_range_right", "idle_down", SubResource( 182 ), "close_range_right", "idle_down", SubResource( 183 ), "close_range_down", "idle_down", SubResource( 184 ), "mid_range_down", "idle_down", SubResource( 185 ) ]
 start_node = "idle_right"
-graph_offset = Vector2( 59.1859, 26.033 )
+graph_offset = Vector2( 232.186, 9.033 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=8]
-
-[sub_resource type="RectangleShape2D" id=186]
-extents = Vector2( 9.97282, 10 )
 
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.6, 0.6 )
@@ -1560,6 +1656,7 @@ hframes = 7
 position = Vector2( -0.971616, 0.999997 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( -0.971252, 2 )
 scale = Vector2( -0.222, 0.222 )
 texture = ExtResource( 1 )
@@ -1575,6 +1672,15 @@ scale = Vector2( 0.222506, -0.227758 )
 texture = ExtResource( 6 )
 hframes = 7
 
+[node name="playerhurt" type="Area2D" parent="CloseRangeAttackUp"]
+position = Vector2( 7.31424, -212.114 )
+scale = Vector2( 4.38856, 4.38856 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseRangeAttackUp/playerhurt"]
+position = Vector2( -1.66669, 38.3286 )
+scale = Vector2( 4.69216, 6.08092 )
+shape = SubResource( 186 )
+
 [node name="CloseRangeAttackLr" type="Sprite" parent="."]
 visible = false
 position = Vector2( 26.6667, -5 )
@@ -1582,12 +1688,29 @@ scale = Vector2( 0.223, 0.228 )
 texture = ExtResource( 7 )
 hframes = 5
 
+[node name="playerhurt" type="Area2D" parent="CloseRangeAttackLr"]
+position = Vector2( 7.31424, -212.114 )
+scale = Vector2( 4.38856, 4.38856 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseRangeAttackLr/playerhurt"]
+position = Vector2( -1.66667, 50 )
+scale = Vector2( 4.69217, 6.08093 )
+shape = SubResource( 186 )
+
 [node name="CloseRangeAttackDown" type="Sprite" parent="."]
-visible = false
 position = Vector2( -1.66666, 48.3333 )
 scale = Vector2( 0.227865, 0.227865 )
 texture = ExtResource( 8 )
 hframes = 8
+
+[node name="playerhurt" type="Area2D" parent="CloseRangeAttackDown"]
+position = Vector2( 7.31424, -212.114 )
+scale = Vector2( 4.38856, 4.38856 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseRangeAttackDown/playerhurt"]
+position = Vector2( -1.66667, 63.3333 )
+scale = Vector2( 4.69217, 6.08093 )
+shape = SubResource( 186 )
 
 [node name="MidRangeAttackUp" type="Sprite" parent="."]
 visible = false
@@ -1596,12 +1719,30 @@ scale = Vector2( 0.227865, 0.227865 )
 texture = ExtResource( 9 )
 hframes = 10
 
+[node name="playerhurt" type="Area2D" parent="MidRangeAttackUp"]
+position = Vector2( 7.31424, -212.114 )
+scale = Vector2( 4.38856, 4.38856 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MidRangeAttackUp/playerhurt"]
+position = Vector2( -1.66667, 50 )
+scale = Vector2( 4.69217, 6.08093 )
+shape = SubResource( 186 )
+
 [node name="MidRangeAttackLr" type="Sprite" parent="."]
 visible = false
 position = Vector2( 71.6667, -5 )
 scale = Vector2( 0.23546, 0.23546 )
 texture = ExtResource( 10 )
 hframes = 10
+
+[node name="playerhurt" type="Area2D" parent="MidRangeAttackLr"]
+position = Vector2( 7.31424, -212.114 )
+scale = Vector2( 4.38856, 4.38856 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MidRangeAttackLr/playerhurt"]
+position = Vector2( -1.66667, 50 )
+scale = Vector2( 4.69217, 6.08093 )
+shape = SubResource( 186 )
 
 [node name="MidRangeAttackDown" type="Sprite" parent="."]
 visible = false
@@ -1610,18 +1751,20 @@ scale = Vector2( 0.232313, 0.232313 )
 texture = ExtResource( 11 )
 hframes = 8
 
+[node name="playerhurt" type="Area2D" parent="MidRangeAttackDown"]
+position = Vector2( 7.31424, -212.114 )
+scale = Vector2( 4.38856, 4.38856 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MidRangeAttackDown/playerhurt"]
+position = Vector2( -1.66667, 50 )
+scale = Vector2( 4.69217, 6.08093 )
+shape = SubResource( 186 )
+
 [node name="BoomerangAttack" type="Sprite" parent="."]
 visible = false
 position = Vector2( -23.3333, -5 )
 scale = Vector2( 0.232313, 0.232313 )
 texture = ExtResource( 12 )
 hframes = 8
-
-[node name="playerhurt" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="playerhurt"]
-position = Vector2( 23.2058, 0 )
-scale = Vector2( 4.69217, 6.08093 )
-shape = SubResource( 186 )
 
 [connection signal="animation_finished" from="playerAnimationController" to="playerAnimationController" method="_on_playerAnimationController_animation_finished"]

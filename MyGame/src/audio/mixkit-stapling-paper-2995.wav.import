@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-stapling-paper-2995.wav-8f0da900d8a35da7c350d8b0f839a443.sample"
+
+[deps]
+
+source_file="res://src/audio/mixkit-stapling-paper-2995.wav"
+dest_files=[ "res://.import/mixkit-stapling-paper-2995.wav-8f0da900d8a35da7c350d8b0f839a443.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
