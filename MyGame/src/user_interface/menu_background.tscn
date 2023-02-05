@@ -76,14 +76,7 @@ color_ramp = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Container" type="Container" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="TextureRect" type="TextureRect" parent="Container"]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -94,23 +87,33 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Control2" type="Control" parent="Container"]
-margin_right = 1025.0
-margin_bottom = 600.0
+[node name="Container" type="Container" parent="TextureRect"]
+anchor_left = 0.291992
+anchor_top = 0.35
+anchor_right = 0.331055
+anchor_bottom = 0.416667
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="smoke" type="Particles2D" parent="Container/Control2"]
-position = Vector2( 310, 218 )
+[node name="smoke" type="Particles2D" parent="TextureRect/Container"]
+position = Vector2( 14, 10 )
 rotation = -1.5708
 amount = 150
 lifetime = 3.0
 process_material = SubResource( 1 )
 
-[node name="Control" type="Control" parent="Container"]
-margin_right = 1025.0
-margin_bottom = 600.0
+[node name="Container2" type="Container" parent="TextureRect"]
+anchor_left = 0.644531
+anchor_top = 0.685
+anchor_right = 0.683594
+anchor_bottom = 0.751667
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="fire" type="Particles2D" parent="Container/Control"]
-position = Vector2( 674, 424 )
+[node name="fire" type="Particles2D" parent="TextureRect/Container2"]
+position = Vector2( 14, 12 )
 rotation = -1.5708
 amount = 70
 lifetime = 1.5
