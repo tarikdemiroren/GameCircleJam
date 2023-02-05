@@ -53,6 +53,7 @@ func die():
 
 
 func _on_slimeDetect_body_entered(body):
+	animator.play("BlueSlimeWalk")
 	is_in_area = true
 	mybody = body
 	pass # Replace with function body.

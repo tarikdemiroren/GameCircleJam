@@ -23,16 +23,16 @@ tracks/0/keys = {
 "values": [ 14, 15, 16, 17, 18, 19, 20 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath("slimeHitBox/CollisionShape2D:shape:extents")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 10, 10 ), Vector2( 13.5, 13.5 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -52,21 +52,21 @@ tracks/0/keys = {
 "values": [ 14, 15, 16, 17, 18, 19, 20 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath("slimeHitBox/CollisionShape2D:shape:extents")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -1, 1 ) ]
+"values": [ Vector2( 10, 10 ), Vector2( 14, 13.5 ) ]
 }
 
 [sub_resource type="Animation" id=3]
 resource_name = "BlueSlimeDead"
-length = 0.5
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BlueSlime:frame")
@@ -79,6 +79,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 28, 29, 30, 31, 32 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -131,18 +145,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 7, 8, 9, 10, 11, 12 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=8]
 resource_name = "BlueSlimeWalkLeft"
@@ -159,18 +161,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 7, 8, 9, 10, 11, 12 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -211,19 +201,31 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( -1, 1 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("slimeHitBox/CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10, 10 ) ]
+}
 
 [sub_resource type="CircleShape2D" id=10]
-radius = 182.176
+radius = 287.063
 
 [sub_resource type="CircleShape2D" id=11]
 radius = 67.0075
 
-[sub_resource type="CircleShape2D" id=12]
-radius = 6.08276
+[sub_resource type="RectangleShape2D" id=12]
 
 [node name="BlueSlimeKinematic" type="KinematicBody2D"]
-rotation = -6.28319
 scale = Vector2( -1, 1 )
+collision_layer = 4
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="BlueSlimeCollision" type="CollisionShape2D" parent="."]
