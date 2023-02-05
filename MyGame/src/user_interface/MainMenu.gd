@@ -54,3 +54,7 @@ func _on_SureToQuit_confirmed():
 	get_tree().quit()
 	
 
+
+
+func _on_Start_pressed():
+	get_tree().change_scene("res://src/levels/Stages.tscn")
