@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/scenes/PlayerScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/actors/EvilEye.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/actors/Mushroom.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/particles/fire/BlueFire.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/actors/BlueSlime.tscn" type="PackedScene" id=7]
 
 [node name="LevelTemplate" type="Node2D"]
 
@@ -83,9 +84,9 @@ scale = Vector2( 0.6, 0.6 )
 scale = Vector2( 0.6, 0.6 )
 
 [node name="PlayerScene" parent="." instance=ExtResource( 1 )]
-margin_left = 2.0
+margin_left = 3.0
 margin_top = 1.0
-margin_right = 2.0
+margin_right = 3.0
 margin_bottom = 1.0
 
 [node name="MushroomKinematic" parent="." instance=ExtResource( 5 )]
@@ -102,6 +103,30 @@ position = Vector2( 273, 215 )
 
 [node name="BlueFire4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 721, 217 )
+
+[node name="BlueSlimeKinematic" parent="." instance=ExtResource( 7 )]
+position = Vector2( 35, -88 )
+rotation = 3.14159
+
+[node name="BlueSlimeKinematic2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -562, -1042 )
+rotation = 3.14159
+
+[node name="BlueSlimeKinematic3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1807, -1294 )
+rotation = 3.14159
+
+[node name="BlueSlimeKinematic4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1944, -1291 )
+rotation = 3.14159
+
+[node name="BlueSlimeKinematic5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1867, -1196 )
+rotation = 3.14159
+
+[node name="BlueSlimeKinematic6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1372, -288 )
+rotation = 3.14159
 
 [editable path="EvilEyeKinematic"]
 [editable path="EvilEyeKinematic2"]
