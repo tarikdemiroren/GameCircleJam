@@ -33,6 +33,7 @@ position = Vector2( -527, 155 )
 
 [node name="Particles2D4" parent="." instance=ExtResource( 3 )]
 position = Vector2( -528, 412 )
+scale = Vector2( 0.999333, 1 )
 
 [node name="Particles2D5" parent="." instance=ExtResource( 3 )]
 position = Vector2( -942, 410 )
