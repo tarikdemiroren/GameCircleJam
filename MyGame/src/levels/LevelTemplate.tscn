@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/actors/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/scenes/PlayerScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://src/particles/fire/fire.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/actors/EvilEye.tscn" type="PackedScene" id=4]
@@ -69,7 +69,10 @@ scale = Vector2( 0.6, 0.6 )
 scale = Vector2( 0.6, 0.6 )
 
 [node name="EvilEyeKinematic2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2197, 237 )
+position = Vector2( 2204, 237 )
+
+[node name="EvilEyeCollision" parent="EvilEyeKinematic2" index="0"]
+position = Vector2( 1, 0 )
 
 [node name="CollisionShape2D" parent="EvilEyeKinematic2/DetectRange" index="0"]
 scale = Vector2( 0.6, 0.6 )
@@ -77,8 +80,11 @@ scale = Vector2( 0.6, 0.6 )
 [node name="CollisionShape2D" parent="EvilEyeKinematic2/AttRange" index="0"]
 scale = Vector2( 0.6, 0.6 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 497, 257 )
+[node name="PlayerScene" parent="." instance=ExtResource( 1 )]
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 2.0
+margin_bottom = 1.0
 
 [editable path="EvilEyeKinematic"]
 [editable path="EvilEyeKinematic2"]

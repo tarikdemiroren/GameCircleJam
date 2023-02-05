@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/user_interface/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/dynamic_fonts/pixelfont1.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/user_interface/menu_background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fonts/Symtext.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/logo.png" type="Texture" id=5]
+[ext_resource path="res://src/audio/campfire-crackling-fireplace-sound-119594.mp3" type="AudioStream" id=6]
+[ext_resource path="res://src/audio/forest-wind-and-birds-6881.mp3" type="AudioStream" id=7]
+[ext_resource path="res://src/audio/mixkit-stapling-paper-2995.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -228,6 +231,21 @@ rect_min_size = Vector2( 400, 140 )
 window_title = "Lütfen Doğrulayın..."
 dialog_text = "Are You Sure You Want To Quit? 
 Anything unsaved will be lost!"
+
+[node name="FireSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 672, 445 )
+stream = ExtResource( 6 )
+volume_db = 1.0
+
+[node name="ForestSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 534, 377 )
+stream = ExtResource( 7 )
+volume_db = 1.0
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 557, 326 )
+stream = ExtResource( 8 )
+volume_db = 10.0
 
 [connection signal="pressed" from="MainContainer/buttons/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="MainContainer/buttons/Exit" to="." method="_on_Exit_pressed"]
