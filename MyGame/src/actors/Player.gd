@@ -35,7 +35,7 @@ onready var rootSpawns2 = [$layer2/rootSpawner, $layer2/rootSpawner2, $layer2/ro
 func _ready() -> void:
 	cam.make_current()
 	animation_tree.active = true
-	state_machine.travel("idle_right")
+	free_soul()
 	last_dir = DIRECTION.RIGHT
 	watchSprite.hide()
 	health = MAX_HEALTH
@@ -66,8 +66,8 @@ func get_input():
 		if Input.is_action_just_pressed("ultimate_attack"):
 			if last_time_ult_used == null or OS.get_unix_time() - last_time_ult_used > 10:
 				last_time_ult_used = OS.get_unix_time()
-				ultimate_attack()
 				cutInput = true
+				ultimate_attack()
 				return
 			else:
 				watchSprite.show()
