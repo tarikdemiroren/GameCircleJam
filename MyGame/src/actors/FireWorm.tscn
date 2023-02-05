@@ -7,15 +7,15 @@
 [ext_resource path="res://assets/FireWorm/Idle.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 9.9336
-height = 13.7329
+radius = 2.05625
+height = 0.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "FireWormAttack"
 length = 1.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Attack:frame")
+tracks/0/path = NodePath("FireWormAttack:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -26,12 +26,38 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("FireWormAttack:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "FireWormDeath"
 length = 0.8
 tracks/0/type = "value"
-tracks/0/path = NodePath("Death:frame")
+tracks/0/path = NodePath("FireWormDeath:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -42,13 +68,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("FireWormDeath:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "FireWormHit"
 length = 0.3
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("GetHit:frame")
+tracks/0/path = NodePath("FireWormGetHit:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -59,13 +97,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("FireWormGetHit:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "FireWormIdle"
 length = 0.9
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Idle:frame")
+tracks/0/path = NodePath("FireWormIdle:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -82,7 +132,7 @@ resource_name = "FireWormWalk"
 length = 0.9
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Walk:frame")
+tracks/0/path = NodePath("FireWormWalk:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -93,11 +143,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("FireWormWalk:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Walk:frame")
+tracks/0/path = NodePath("FireWormWalk:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -109,7 +171,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Idle:frame")
+tracks/1/path = NodePath("FireWormIdle:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -121,7 +183,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("GetHit:frame")
+tracks/2/path = NodePath("FireWormGetHit:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -133,7 +195,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Death:frame")
+tracks/3/path = NodePath("FireWormDeath:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -145,7 +207,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Attack:frame")
+tracks/4/path = NodePath("FireWormAttack:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -155,6 +217,54 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("FireWormAttack:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("FireWormDeath:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("FireWormGetHit:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("FireWormWalk:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
@@ -169,6 +279,7 @@ rotation = 0.867429
 shape = SubResource( 1 )
 
 [node name="Attack" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 1 )
 hframes = 16
 
@@ -177,14 +288,17 @@ texture = ExtResource( 3 )
 hframes = 8
 
 [node name="GetHit" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 hframes = 3
 
 [node name="Idle" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 5 )
 hframes = 9
 
 [node name="Walk" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 4 )
 hframes = 9
 

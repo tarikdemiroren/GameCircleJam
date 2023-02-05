@@ -178,6 +178,7 @@ texture = ExtResource( 1 )
 hframes = 4
 
 [node name="GoblinIdle" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, 1 )
 texture = ExtResource( 4 )
 hframes = 4
@@ -189,7 +190,6 @@ texture = ExtResource( 2 )
 hframes = 8
 
 [node name="GoblinTakeHit" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 5 )
 hframes = 4
 

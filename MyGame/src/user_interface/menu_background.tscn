@@ -1,28 +1,52 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/title_background.png" type="Texture" id=1]
 
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.561983, 1 )
+colors = PoolColorArray( 0.565104, 0.51654, 0.51654, 1, 0.428999, 0.396385, 0.396385, 1, 0.322917, 0.302734, 0.302734, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+width = 100
+
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0, 0.506887, 1 )
+colors = PoolColorArray( 0.97526, 0.933355, 0.933355, 1, 0.506887, 0.506887, 0.506887, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+width = 100
+
 [sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.4
 emission_shape = 2
 emission_box_extents = Vector3( 5, 15, 1 )
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 36.53
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 20.0
+gravity = Vector3( 20, -25, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-linear_accel = 37.62
+linear_accel = 45.0
+linear_accel_random = 0.5
+radial_accel = 7.0
+radial_accel_random = 0.7
 angle = -45.0
-scale = 20.0
+scale = 15.0
 color = Color( 0.701961, 0.701961, 0.701961, 1 )
+color_ramp = SubResource( 10 )
+color_initial_ramp = SubResource( 8 )
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.487097, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 0.632812, 0, 1, 1, 0.0211416, 0.0211416, 1 )
+colors = PoolColorArray( 0.817108, 0.820313, 0.410156, 1, 1, 0.632812, 0, 1, 1, 0.0211416, 0.0211416, 1 )
 
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
+width = 100
 
 [sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.969274, 0.422692 ), 0.0, 0.0, 0, 0 ]
@@ -31,17 +55,20 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.969274, 0.422692 ), 0.0, 0
 curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=6]
+lifetime_randomness = 0.7
 emission_shape = 2
-emission_box_extents = Vector3( 5, 18, 1 )
+emission_box_extents = Vector3( 5, 14, 1 )
 flag_disable_z = true
-spread = 20.0
+direction = Vector3( 100, 0, 0 )
+spread = 10.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 50.0
+initial_velocity_random = 0.5
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-linear_accel = 15.0
+linear_accel = 20.0
 angle = 45.0
-scale = 25.0
+scale = 17.0
 scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
@@ -49,22 +76,44 @@ color_ramp = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Container" type="Container" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource( 1 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="smoke" type="Particles2D" parent="TextureRect"]
-position = Vector2( 315, 220 )
+[node name="Control2" type="Control" parent="Container"]
+margin_right = 1025.0
+margin_bottom = 600.0
+
+[node name="smoke" type="Particles2D" parent="Container/Control2"]
+position = Vector2( 310, 218 )
 rotation = -1.5708
-amount = 100
-lifetime = 2.0
+amount = 150
+lifetime = 3.0
 process_material = SubResource( 1 )
 
-[node name="fire" type="Particles2D" parent="."]
-position = Vector2( 683, 431 )
+[node name="Control" type="Control" parent="Container"]
+margin_right = 1025.0
+margin_bottom = 600.0
+
+[node name="fire" type="Particles2D" parent="Container/Control"]
+position = Vector2( 674, 424 )
 rotation = -1.5708
-amount = 50
-lifetime = 2.0
+amount = 70
+lifetime = 1.5
+explosiveness = 0.1
+randomness = 0.7
 process_material = SubResource( 6 )
