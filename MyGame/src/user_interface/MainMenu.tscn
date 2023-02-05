@@ -247,6 +247,7 @@ position = Vector2( 557, 326 )
 stream = ExtResource( 8 )
 volume_db = 10.0
 
+[connection signal="pressed" from="MainContainer/buttons/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="MainContainer/buttons/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="MainContainer/buttons/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="OptionsScreen/optionsContainer/fullScreenToggle" to="." method="_on_fullScreenToggle_pressed"]

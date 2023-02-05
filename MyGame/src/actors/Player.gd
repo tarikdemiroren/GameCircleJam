@@ -9,6 +9,9 @@ onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.g
 onready var animatior := $playerAnimationController
 onready var watchSprite := $WatchMe
 
+onready var sprint_sound := $SprintAudio
+onready var walk_sound := $WalkAudio
+
 onready var main_sprite := $PlayerSprite
 onready var close_atk_up := $CloseRangeAttackUp
 onready var close_atk_lr := $CloseRangeAttackLr
@@ -35,7 +38,7 @@ onready var rootSpawns2 = [$layer2/rootSpawner, $layer2/rootSpawner2, $layer2/ro
 func _ready() -> void:
 	cam.make_current()
 	animation_tree.active = true
-	state_machine.travel("idle_right")
+	free_soul()
 	last_dir = DIRECTION.RIGHT
 	watchSprite.hide()
 	health = MAX_HEALTH
@@ -50,11 +53,18 @@ func take_damage(amount: int):
 
 func _physics_process(delta):
 	get_input()
-	input_direction = move_and_slide(input_direction)
-	if Input.is_action_just_pressed("take_damage"):
-		take_damage(9)
-	
-	
+	input_direction = move_and_slide(input_direction)	
+	if isSprinting:
+		if !sprint_sound.playing:
+			sprint_sound.play()
+	else:
+		sprint_sound.stop()
+	#case of walk
+	if not isSprinting and input_direction.length() > 0:
+		if !walk_sound.playing:
+			walk_sound.play()
+	else:
+		walk_sound.stop()
 
 func get_input():
 	
@@ -66,8 +76,8 @@ func get_input():
 		if Input.is_action_just_pressed("ultimate_attack"):
 			if last_time_ult_used == null or OS.get_unix_time() - last_time_ult_used > 10:
 				last_time_ult_used = OS.get_unix_time()
-				ultimate_attack()
 				cutInput = true
+				ultimate_attack()
 				return
 			else:
 				watchSprite.show()
@@ -103,7 +113,6 @@ func get_input():
 			isSprinting = false
 	
 		determine_move_animation()
-	
 
 func determine_move_animation():
 	
@@ -134,7 +143,6 @@ func determine_move_animation():
 			state_machine.travel("sprint_up_1")
 			last_dir = DIRECTION.UP
 			return
-		#
 		if input_direction.x > 0:
 			state_machine.travel("sprint_right_1")
 			last_dir = DIRECTION.RIGHT
@@ -152,7 +160,6 @@ func determine_move_animation():
 			state_machine.travel("walk_up_1")
 			last_dir = DIRECTION.UP
 			return
-		#
 		if input_direction.x > 0:
 			state_machine.travel("walk_right_1")
 			last_dir = DIRECTION.RIGHT
