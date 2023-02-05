@@ -1533,6 +1533,7 @@ hframes = 7
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( -0.971616, 0.999997 )
+zoom = Vector2( 0.6, 0.6 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 visible = false
