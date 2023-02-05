@@ -3,6 +3,7 @@ extends Control
 onready var mainSettings = $MainContainer
 onready var settings = $OptionsScreen
 onready var confirm = $SureToQuit
+onready var logo = $logo
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -25,11 +26,13 @@ func _on_Exit_pressed():
 
 func _on_Options_pressed():
 	mainSettings.hide()
+	logo.hide()
 	settings.show()
 
 
 func _on_GoBack_pressed():
 	mainSettings.show()
+	logo.show()
 	settings.hide()
 
 
