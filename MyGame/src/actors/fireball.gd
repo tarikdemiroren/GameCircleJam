@@ -19,10 +19,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float):
-	if is_in_area:
-		direction = (mybody.global_position-self.global_position).normalized()*speed
-		moveSprite.rotate(velocity.angle())
-		steering = direction - velocity
+	direction = (mybody.global_position-self.global_position).normalized()*speed
+	moveSprite.rotate(velocity.angle())
+	steering = direction - velocity
 	velocity = move_and_slide(velocity + steering*superKatsay)
 	pass
 

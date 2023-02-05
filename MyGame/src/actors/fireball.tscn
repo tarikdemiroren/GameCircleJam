@@ -39,10 +39,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 2870.61
+radius = 570.022
 
 [sub_resource type="CircleShape2D" id=6]
-radius = 71.0634
+radius = 221.111
 
 [node name="FireballKinematic" type="KinematicBody2D"]
 position = Vector2( 49, 37 )
