@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fireball/Move.png" type="Texture" id=1]
 [ext_resource path="res://src/actors/fireball.gd" type="Script" id=2]
@@ -42,7 +42,10 @@ tracks/0/keys = {
 radius = 570.022
 
 [sub_resource type="CircleShape2D" id=6]
-radius = 221.111
+radius = 177.025
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 347.052
 
 [node name="FireballKinematic" type="KinematicBody2D"]
 position = Vector2( 49, 37 )
@@ -75,6 +78,14 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nothomearea"]
 shape = SubResource( 6 )
 
+[node name="controlarea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="controlarea"]
+shape = SubResource( 7 )
+
 [connection signal="body_entered" from="FireBallHomingArea2D" to="." method="_on_FireBallHomingArea2D_body_entered"]
 [connection signal="body_exited" from="FireBallHomingArea2D" to="." method="_on_FireBallHomingArea2D_body_exited"]
 [connection signal="body_entered" from="nothomearea" to="." method="_on_nothomearea_body_entered"]
+[connection signal="body_exited" from="nothomearea" to="." method="_on_nothomearea_body_exited"]
+[connection signal="body_entered" from="controlarea" to="." method="_on_controlarea_body_entered"]
+[connection signal="body_exited" from="controlarea" to="." method="_on_controlarea_body_exited"]

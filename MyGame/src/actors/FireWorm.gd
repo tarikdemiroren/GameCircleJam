@@ -30,19 +30,27 @@ func take_damage(amount: int ):
 	idleSprite.hide()
 	runSprite.hide()
 	hitSprite.show()
-	#animator.play("EvilEyeTakeHit")
+	if (velocity.x >= 0):
+		animator.play("FireWormHit")
+	else:
+		animator.play("FireWormHitLeft")
 	print(health)
 	health -= amount
 	print(health)
 	if (health <= 0):
 		dead = true
 		idleSprite.hide()
-		deathSprite.show()
 		attSprite.hide()
 		hitSprite.hide()
-		animator.play("MushroomDeath")
+		deathSprite.show()
+		animator.play("FireWormDeath")
 		velocity = Vector2.ZERO
+	
+	hitSprite.hide()
+	set_physics_process_internal(true)
 
+func die():
+	self.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float):
@@ -57,7 +65,7 @@ func _physics_process(_delta: float):
 		elif ((velocity.x >= 0) and is_attack_on ) and ( last_ulti == null or OS.get_unix_time() - last_ulti > 5 ):
 			last_ulti = OS.get_unix_time()
 			animator.play("FireWormAttack")
-		elif is_attack_on:
+		elif not dead:
 			animator.play("FireWormAttackLeft")
 	pass
 

@@ -19,10 +19,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float):
-	direction = (mybody.global_position-self.global_position).normalized()*speed
-	moveSprite.rotate(velocity.angle())
-	steering = direction - velocity
-	velocity = move_and_slide(velocity + steering*superKatsay)
+	if is_in_area:
+		direction = (mybody.global_position-self.global_position).normalized()*speed
+		moveSprite.rotate(velocity.angle())
+		steering = direction - velocity
+		velocity = move_and_slide(velocity + steering*superKatsay)
 	pass
 
 func _on_FireBallHomingArea2D_body_entered(body):
@@ -41,3 +42,18 @@ func _on_FireBallHomingArea2D_body_exited(body):
 
 func _on_nothomearea_body_entered(body):
 	superKatsay = 0
+
+
+func _on_nothomearea_body_exited(body):
+	is_in_area = true
+	mybody = body
+
+
+func _on_controlarea_body_exited(body):
+	is_in_area = true
+	mybody = body
+
+
+func _on_controlarea_body_entered(body):
+	is_in_area = true
+	mybody = body

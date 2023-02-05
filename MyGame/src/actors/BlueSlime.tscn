@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/slime.png" type="Texture" id=1]
 [ext_resource path="res://src/actors/BlueSlime.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 10.0499
+radius = 4.12311
 
 [sub_resource type="Animation" id=2]
 resource_name = "BlueSlimeAttack"
@@ -212,7 +212,17 @@ tracks/2/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 
+[sub_resource type="CircleShape2D" id=10]
+radius = 182.176
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 67.0075
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 6.08276
+
 [node name="BlueSlimeKinematic" type="KinematicBody2D"]
+rotation = -6.28319
 scale = Vector2( -1, 1 )
 script = ExtResource( 2 )
 
@@ -220,13 +230,16 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="BlueSlime" type="Sprite" parent="."]
-scale = Vector2( 1.7375, 1.7375 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 7
 vframes = 5
 frame = 21
 
 [node name="BlueSlimeAnimation" type="AnimationPlayer" parent="."]
+autoplay = "BlueSlimeIdle"
+playback_process_mode = 0
+playback_speed = 0.5
 anims/BlueSlimeAttack = SubResource( 2 )
 anims/BlueSlimeAttackLeft = SubResource( 9 )
 anims/BlueSlimeDead = SubResource( 3 )
@@ -235,3 +248,30 @@ anims/BlueSlimeIdle = SubResource( 5 )
 anims/BlueSlimeWalk = SubResource( 6 )
 anims/BlueSlimeWalkLeft = SubResource( 8 )
 anims/RESET = SubResource( 7 )
+
+[node name="slimeDetect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slimeDetect"]
+shape = SubResource( 10 )
+
+[node name="slimeAtt" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slimeAtt"]
+shape = SubResource( 11 )
+
+[node name="slimeHitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slimeHitBox"]
+shape = SubResource( 12 )
+
+[connection signal="body_entered" from="slimeDetect" to="." method="_on_slimeDetect_body_entered"]
+[connection signal="body_exited" from="slimeDetect" to="." method="_on_slimeDetect_body_exited"]
+[connection signal="body_entered" from="slimeAtt" to="." method="_on_slimeAtt_body_entered"]
+[connection signal="body_exited" from="slimeAtt" to="." method="_on_slimeAtt_body_exited"]
+[connection signal="body_entered" from="slimeHitBox" to="." method="_on_slimeHitBox_body_entered"]

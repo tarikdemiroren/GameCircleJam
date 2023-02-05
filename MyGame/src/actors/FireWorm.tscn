@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/FireWorm/Attack.png" type="Texture" id=1]
 [ext_resource path="res://assets/FireWorm/Get Hit.png" type="Texture" id=2]
@@ -55,6 +55,49 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "FireWormAttackLeft"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FireWormAttack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FireWormAttack:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=3]
 resource_name = "FireWormDeath"
 length = 0.8
@@ -81,6 +124,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.72 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -110,6 +167,35 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "FireWormHitLeft"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FireWormGetHit:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FireWormGetHit:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -156,6 +242,35 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "FireWormWalkLeft"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FireWormWalk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FireWormWalk:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -317,10 +432,13 @@ hframes = 9
 [node name="FireWormAnimation" type="AnimationPlayer" parent="."]
 autoplay = "FireWormIdle"
 anims/FireWormAttack = SubResource( 2 )
+anims/FireWormAttackLeft = SubResource( 10 )
 anims/FireWormDeath = SubResource( 3 )
 anims/FireWormHit = SubResource( 4 )
+anims/FireWormHitLeft = SubResource( 11 )
 anims/FireWormIdle = SubResource( 5 )
 anims/FireWormWalk = SubResource( 6 )
+anims/FireWormWalkLeft = SubResource( 12 )
 anims/RESET = SubResource( 7 )
 
 [node name="FireWormDetect" type="Area2D" parent="."]

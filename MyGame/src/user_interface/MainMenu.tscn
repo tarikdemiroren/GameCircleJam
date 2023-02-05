@@ -217,6 +217,7 @@ margin_top = 116.0
 margin_right = 682.0
 margin_bottom = 256.0
 rect_min_size = Vector2( 400, 140 )
+window_title = "Lütfen Doğrulayın..."
 dialog_text = "Are You Sure You Want To Quit? 
 Anything unsaved will be lost!"
 
