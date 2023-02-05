@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/particleAssets/flame.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.269531, 0.811676, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 100
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0.269531, 0.811676, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+width = 100
+
+[sub_resource type="ParticlesMaterial" id=5]
+lifetime_randomness = 0.5
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 25.0
+gravity = Vector3( 0, -10, 0 )
+initial_velocity = 250.0
+initial_velocity_random = 0.31
+angular_velocity = 300.0
+angular_velocity_random = 0.8
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = -7.1
+angle_random = 0.59
+scale = 0.65
+scale_random = 0.75
+color_ramp = SubResource( 4 )
+color_initial_ramp = SubResource( 2 )
+
+[node name="BlueFire" type="Particles2D"]
+amount = 4
+lifetime = 0.1
+speed_scale = 0.15
+explosiveness = 0.25
+randomness = 0.3
+local_coords = false
+process_material = SubResource( 5 )
+texture = ExtResource( 1 )
