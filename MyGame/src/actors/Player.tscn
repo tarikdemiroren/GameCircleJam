@@ -1,4 +1,4 @@
-[gd_scene load_steps=197 format=2]
+[gd_scene load_steps=198 format=2]
 
 [ext_resource path="res://assets/actors/sprite.png" type="Texture" id=1]
 [ext_resource path="res://src/actors/Player.gd" type="Script" id=2]
@@ -230,6 +230,30 @@ tracks/17/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 71.6667, -5 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("playerhurt/CollisionShape2D:shape:extents")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 9.97282, 10 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("playerhurt/CollisionShape2D:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=135]
@@ -483,6 +507,30 @@ tracks/3/keys = {
 "args": [  ],
 "method": "free_soul"
 } ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("playerhurt/CollisionShape2D:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.37 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9.97282, 10 ), Vector2( 14.9456, 10 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("playerhurt/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.45 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=129]
@@ -1383,6 +1431,9 @@ graph_offset = Vector2( 59.1859, 26.033 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=8]
 
+[sub_resource type="RectangleShape2D" id=186]
+extents = Vector2( 9.97282, 10 )
+
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.6, 0.6 )
 collision_layer = 8
@@ -1462,8 +1513,8 @@ position = Vector2( -136.06, 221 )
 position = Vector2( -207.977, -63 )
 
 [node name="PlayerStableCollision" type="CollisionPolygon2D" parent="."]
-position = Vector2( -28.0417, 50.0263 )
-scale = Vector2( 1.91667, 1.83564 )
+position = Vector2( -29.1389, 53.2495 )
+scale = Vector2( 1.67285, 1.4542 )
 polygon = PoolVector2Array( 28, -20, 28, -26, 26.1871, -28.1674, 5, -28, 3, -21, 5, -14, 7, -13, 8, -9, 8, 0, 24, 0, 25, -13, 26, -16 )
 
 [node name="playerAnimationController" type="AnimationPlayer" parent="."]
@@ -1507,7 +1558,6 @@ hframes = 7
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( -0.971616, 0.999997 )
-scale = Vector2( 1, 1 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 position = Vector2( -0.971252, 2 )
@@ -1566,5 +1616,12 @@ position = Vector2( -23.3333, -5 )
 scale = Vector2( 0.232313, 0.232313 )
 texture = ExtResource( 12 )
 hframes = 8
+
+[node name="playerhurt" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerhurt"]
+position = Vector2( 23.2058, 0 )
+scale = Vector2( 4.69217, 6.08093 )
+shape = SubResource( 186 )
 
 [connection signal="animation_finished" from="playerAnimationController" to="playerAnimationController" method="_on_playerAnimationController_animation_finished"]

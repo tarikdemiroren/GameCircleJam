@@ -16,6 +16,8 @@ onready var close_atk_down := $CloseRangeAttackDown
 onready var mid_atk_up := $MidRangeAttackUp
 onready var mid_atk_lr := $MidRangeAttackLr
 onready var mid_atk_down := $MidRangeAttackDown
+
+onready var hurtarea = $playerhurt/CollisionShape2D
 #onready var boomerang_atk := $BoomerangAttack
 
 onready var sprites = [main_sprite,close_atk_up,close_atk_lr,close_atk_down,mid_atk_up,mid_atk_lr,mid_atk_down]
@@ -31,6 +33,7 @@ onready var rootSpawns1 = [$layer1/rootSpawner, $layer1/rootSpawner2, $layer1/ro
 onready var rootSpawns2 = [$layer2/rootSpawner, $layer2/rootSpawner2, $layer2/rootSpawner3, $layer2/rootSpawner4, $layer2/rootSpawner5, $layer2/rootSpawner6, $layer2/rootSpawner7, $layer2/rootSpawner8, $layer2/rootSpawner9]
 
 func _ready() -> void:
+	hurtarea.disabled = true
 	cam.make_current()
 	animation_tree.active = true
 	state_machine.travel("idle_right")
