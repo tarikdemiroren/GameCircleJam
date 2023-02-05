@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/title_char.png" type="Texture" id=1]
+[ext_resource path="res://src/user_interface/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/dynamic_fonts/pixelfont1.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/user_interface/menu_background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://fonts/Symtext.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -35,20 +36,20 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
+[sub_resource type="DynamicFont" id=3]
+size = 18
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 26
+font_data = ExtResource( 4 )
+
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
 
 [node name="menu_background" parent="." instance=ExtResource( 3 )]
-
-[node name="char" type="TextureRect" parent="."]
-margin_left = 181.0
-margin_top = 378.0
-margin_right = 321.0
-margin_bottom = 568.0
-texture = ExtResource( 1 )
-expand = true
-flip_h = true
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -70,9 +71,9 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Start" type="Button" parent="MainContainer/buttons"]
-margin_top = 169.0
+margin_top = 117.0
 margin_right = 500.0
-margin_bottom = 269.0
+margin_bottom = 217.0
 rect_min_size = Vector2( 500, 100 )
 flat = true
 
@@ -89,11 +90,34 @@ custom_colors/font_color_shadow = Color( 1, 0.584314, 0, 1 )
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = ExtResource( 2 )
 text = "Start Game"
+align = 1
+
+[node name="Options" type="Button" parent="MainContainer/buttons"]
+margin_top = 221.0
+margin_right = 500.0
+margin_bottom = 321.0
+rect_min_size = Vector2( 500, 100 )
+flat = true
+
+[node name="OpitonsLabel" type="Label" parent="MainContainer/buttons/Options"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -178.5
+margin_top = -36.0
+margin_right = 178.5
+margin_bottom = 36.0
+custom_colors/font_color_shadow = Color( 1, 0.584314, 0, 1 )
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = ExtResource( 2 )
+text = "Options"
+align = 1
 
 [node name="Exit" type="Button" parent="MainContainer/buttons"]
-margin_top = 273.0
+margin_top = 325.0
 margin_right = 500.0
-margin_bottom = 373.0
+margin_bottom = 425.0
 rect_min_size = Vector2( 500, 100 )
 flat = true
 
@@ -110,6 +134,7 @@ custom_colors/font_color_shadow = Color( 1, 0.584314, 0, 1 )
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = ExtResource( 2 )
 text = "Exit Game"
+align = 1
 
 [node name="VersionLabel" type="Label" parent="MainContainer"]
 margin_top = 551.0
@@ -127,3 +152,76 @@ color = Color( 0, 0, 0, 0 )
 [node name="fader" type="AnimationPlayer" parent="fadeScreen"]
 anims/RESET = SubResource( 1 )
 anims/fade_in = SubResource( 2 )
+
+[node name="OptionsScreen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="optionsContainer" type="VBoxContainer" parent="OptionsScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = -50.0
+
+[node name="fullScreenToggle" type="CheckBox" parent="OptionsScreen/optionsContainer"]
+margin_right = 924.0
+margin_bottom = 24.0
+align = 1
+icon_align = 1
+
+[node name="fllscrnlabel" type="Label" parent="OptionsScreen/optionsContainer/fullScreenToggle"]
+anchor_left = 0.032767
+anchor_top = -0.166667
+anchor_right = 0.298544
+anchor_bottom = 1.0
+custom_colors/font_color_shadow = Color( 1, 0, 0.984314, 1 )
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 3 )
+text = "Toggle Fullscreen"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="GoBack" type="Button" parent="OptionsScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -50.0
+margin_right = 250.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 500, 100 )
+flat = true
+
+[node name="BackLabel" type="Label" parent="OptionsScreen/GoBack"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -178.5
+margin_top = -36.0
+margin_right = 178.5
+margin_bottom = 36.0
+custom_colors/font_color_shadow = Color( 1, 0, 0.984314, 1 )
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 4 )
+text = "Go Back To The Maın Menu"
+align = 1
+
+[node name="SureToQuit" type="ConfirmationDialog" parent="."]
+margin_left = 282.0
+margin_top = 116.0
+margin_right = 682.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 400, 140 )
+dialog_text = "Are You Sure You Want To Quit? 
+Anything unsaved will be lost!"
+
+[connection signal="pressed" from="MainContainer/buttons/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="MainContainer/buttons/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="OptionsScreen/optionsContainer/fullScreenToggle" to="." method="_on_fullScreenToggle_pressed"]
+[connection signal="pressed" from="OptionsScreen/GoBack" to="." method="_on_GoBack_pressed"]
+[connection signal="confirmed" from="SureToQuit" to="." method="_on_SureToQuit_confirmed"]

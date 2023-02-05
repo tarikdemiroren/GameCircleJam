@@ -93,8 +93,9 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "EvilEyeDeath"
-length = 0.4
+length = 0.5
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("../EvilEyeDeath:frame")
 tracks/0/interp = 1
@@ -104,8 +105,22 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.35 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -306,7 +321,6 @@ position = Vector2( 3, 2 )
 shape = SubResource( 1 )
 
 [node name="EvilEyeFlight" type="Sprite" parent="."]
-visible = false
 scale = Vector2( -1, 1 )
 texture = ExtResource( 1 )
 hframes = 8
@@ -323,6 +337,7 @@ anims/flight = SubResource( 3 )
 anims/flight_left = SubResource( 9 )
 
 [node name="EvilEyeAttack" type="Sprite" parent="."]
+visible = false
 scale = Vector2( -1, 1 )
 texture = ExtResource( 2 )
 hframes = 8

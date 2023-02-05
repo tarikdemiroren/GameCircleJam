@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/prototype_assets/prototype_main_menu.jpeg" type="Texture" id=1]
+[ext_resource path="res://assets/title_background.png" type="Texture" id=1]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -56,14 +56,14 @@ texture = ExtResource( 1 )
 expand = true
 
 [node name="smoke" type="Particles2D" parent="TextureRect"]
-position = Vector2( 859, 64 )
+position = Vector2( 315, 220 )
 rotation = -1.5708
 amount = 100
 lifetime = 2.0
 process_material = SubResource( 1 )
 
 [node name="fire" type="Particles2D" parent="."]
-position = Vector2( 110, 542 )
+position = Vector2( 683, 431 )
 rotation = -1.5708
 amount = 50
 lifetime = 2.0
